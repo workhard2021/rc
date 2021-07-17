@@ -9,11 +9,14 @@
     <title><?= $title ?></title>
 </head>
 <body>
-      <header>
-           <nav>
-                 <a href="/">Accueil</a>
-                 <a href="form">Ajoute bie</a>
-                 <a href="gets">liste bie</a>
+      <heade class="w-100">
+
+           <nav class="p-2">
+
+                 <a class="p-1" href="/">Accueil</a>
+                 <a class="p-1" href="/index.php?action=form">Ajoute bie</a>
+                 <a class="p-1" href="/index.php?action=formClient">ajoute client</a>
+                 <a class="p-1" href="/index.php?action=form-utilisateur">ajoute utilisateur</a>
            </nav>
       </header>
       <main class="d-flex">

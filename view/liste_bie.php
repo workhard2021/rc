@@ -21,7 +21,7 @@
                 </td>
                 <td class='text-center'><?= $value["fin_indispot_bie"] ?></td>
                 <td class='text-center'> 
-                  <a  class='btn btn-info' href='index.php?action=update&id=<?= $value["id_bie"]?>'>modifier</a>
+                  <a  class='btn btn-info' href='index.php?action=getUpdate&id=<?= $value["id_bie"]?>'>modifier</a>
                   <a  class="btn btn-danger" href='index.php?action=delete&id=<?= $value["id_bie"]?>'> suprimer</a>
                 </td>
         </tr>

@@ -64,6 +64,7 @@ class Route{
         
     }
 
+    
     public static function update(Array $arg){
 
         if(count($arg)>0){
@@ -72,6 +73,31 @@ class Route{
 
         }else{
                throw new Exception("ROUTE update error");
+
+         }  
+    }
+
+    public static function getUpdate(Array $arg){
+
+        if(count($arg)>0){
+            
+            return  $arg['controller']->getUpdate();
+
+        }else{
+               throw new Exception("ROUTE update error");
+
+         }  
+    }
+
+
+    public static function formClient(Array $arg){
+
+        if(count($arg)>0){
+            
+            return  $arg['controller']->formClient();
+
+        }else{
+               throw new Exception("ROUTE formClient error");
 
          }  
     }
@@ -89,5 +115,6 @@ class Route{
         }
          
     }
+
     
 }

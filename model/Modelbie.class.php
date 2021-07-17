@@ -7,7 +7,7 @@
          private $db;
          public function __construct()
          {
-             $this->db=new PDO('mysql:host=localhost;dbname=bd_bie;charset=utf8', 'root', 'root'); 
+             $this->db=new PDO('mysql:host=localhost;dbname=db_bie;charset=utf8', 'root', 'root'); 
          }
 
           public function gets(){
@@ -17,6 +17,9 @@
                     JOIN typej as tj on tj.id_typej=l.id_typej 
                     JOIN typeh as th on th.id_typeh=l.id_typeh
                     JOIN origine as orig on orig.id_origine=l.id_orig
+                    JOIN siege as sg on sg.id_siege=l.Id_Siege
+                    JOIN causes as cs on cs.id_cause=l.Id_cause
+                    JOIN defauts as df on df.Id_type=l.Id_typedef
                  ";
                  $req=$this->db->prepare($requette);
                  $req->execute();
@@ -29,12 +32,15 @@
                     JOIN typej as tj on tj.id_typej=l.id_typej 
                     JOIN typeh as th on th.id_typeh=l.id_typeh
                     JOIN origine as orig on orig.id_origine=l.id_orig
+                    JOIN siege as sg on sg.id_siege=l.Id_Siege
+                    JOIN causes as cs on cs.id_cause=l.Id_cause
+                    JOIN defauts as df on df.Id_type=l.Id_typedef
                     WHERE id_bie=?";
 
                $req=$this->db->prepare($requette);
                $req->execute(array($id));
                return $req->fetch();
-               
+
           }
 
           public function create(Array $array){
@@ -68,7 +74,7 @@
           public function update(Array $array){
 
               $arrayValue=[];
-              $requette="UPDATE liste_bie SET "; 
+              $requette="UPDATE liste_bie SET"; 
               $i=0;
 
               foreach($array as $key => $value){  

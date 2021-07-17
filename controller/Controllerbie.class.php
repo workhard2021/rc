@@ -24,21 +24,27 @@ class ControllerBie{
         require_once('view/bie.php');
         require_once('view/templete.php');   
     }
-       
+      
+    //appel de formulaire avec les données
     public function form(){
         
-        $array["nature"]=$this->model->cherche("nature");
-        $array["origine"]=$this->model->cherche("origine");
-        $array["siege"]=$this->model->cherche("siege");
-        $array["liste_village"]=$this->model->cherche("liste_village");
-        $array["liste_realimentation"]=$this->model->cherche("liste_realimentation");
-        $array["liste_commune"]=$this->model->cherche("liste_commune");
-        $array["defauts"]=$this->model->cherche("defauts");
-        $array["causes"]=$this->model->cherche("causes");
-        $array["typeH"]=$this->model->cherche("typeH");
-        $array["typeh"]=$this->model->cherche("typeh");
-        $array["typeH"]=$this->model->cherche("typeH");
-        var_dump($array);
+        $nature=$this->model->cherche("nature");
+        $origine=$this->model->cherche("origine");
+        $sieges=$this->model->cherche("siege");
+        $liste_village=$this->model->cherche("liste_village");
+        $liste_realimentation=$this->model->cherche("liste_realimentation");
+        $liste_commune=$this->model->cherche("liste_commune");
+        $defauts=$this->model->cherche("defauts");
+        $causes=$this->model->cherche("causes");
+        $typej=$this->model->cherche("typej");
+        $typeh=$this->model->cherche("typeh");
+        $departs=$this->model->cherche("depart_hta");
+        $poste_source=$this->model->cherche("pos_sce");
+        $omt=$this->model->cherche("omt");
+        $ild=$this->model->cherche("ild");
+        $transfo=$this->model->cherche("clients");
+        require_once("view/form_bie.php");
+        require_once("view/templete.php");
 
     }
 
@@ -49,18 +55,23 @@ class ControllerBie{
 
     public function getUpdate(){
  
-        $array["nature"]=$this->model->cherche("nature");
-        $array["origine"]=$this->model->cherche("origine");
-        $array["siege"]=$this->model->cherche("siege");
-        $array["liste_village"]=$this->model->cherche("liste_village");
-        $array["liste_realimentation"]=$this->model->cherche("liste_realimentation");
-        $array["liste_commune"]=$this->model->cherche("liste_commune");
-        $array["defauts"]=$this->model->cherche("defauts");
-        $array["causes"]=$this->model->cherche("causes");
-        $array["typeH"]=$this->model->cherche("typeH");
-        $array["typeh"]=$this->model->cherche("typeh");
-        $array["typeH"]=$this->model->cherche("typeH");
-        var_dump($array);  
+        $nature=$this->model->cherche("nature");
+        $origine=$this->model->cherche("origine");
+        $sieges=$this->model->cherche("siege");
+        $liste_village=$this->model->cherche("liste_village");
+        $liste_realimentation=$this->model->cherche("liste_realimentation");
+        $liste_commune=$this->model->cherche("liste_commune");
+        $defauts=$this->model->cherche("defauts");
+        $causes=$this->model->cherche("causes");
+        $typej=$this->model->cherche("typej");
+        $typeh=$this->model->cherche("typeh");
+        $departs=$this->model->cherche("depart_hta");
+        $poste_source=$this->model->cherche("pos_sce");
+        
+        
+        require_once("view/form_bie.php");
+        require_once("view/templete.php");
+  
     }
 
     public function create(Array $arry){
@@ -73,4 +84,10 @@ class ControllerBie{
         $updt=$this->model->update(["nom"=>"camara",'prenom'=>"souleymane","a"=>"usa"]);
         
     }
+    public function formClient(){
+
+        // $donnees=$this->model->gets(); 
+        require_once('view/form_client.php');
+        require_once('view/templete.php');   
+   }
 }
