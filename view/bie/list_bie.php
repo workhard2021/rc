@@ -1,4 +1,4 @@
-<?php $titre="Liste bie"; ob_start() ?>
+<?php  ob_start(); $titre="Liste bie";?>
    <table  class='table'>
           <thead>
             <tr>
@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <body>
-       <?php foreach($res as $value){ ?>
+        <?php foreach($res as $value){ ?>
             <tr>
                   <td class='text-center'><?= $value['id_bie'] ?></td>
                   <td class='text-center'>

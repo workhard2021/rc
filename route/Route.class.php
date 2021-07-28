@@ -125,21 +125,20 @@ class Route{
     public static function pdf(Controller $controller){
 
         $id= isset($_GET['id'])? intval($_GET['id']):false;
-    
         if(!$id){
             throw new Exception("UNE ERREUR DANS LA ROUTE PDF ID EXISTE PAS");
         }
-       
+        $html=$controller->get_bie_pdf($id);
         $option=new Options();
         $option->set("defautlFont","courier");
         $dompdf=new Dompdf($option);
-        $dompdf->loadHtml("Bonsoir");
+        $dompdf->loadHtml($html);
         $dompdf->setPaper("A4","portrait");
         $dompdf->render();
         $ficher="doc-".date("d-m-Y");
         $dompdf->stream($ficher);
-        
-        
     }
+
+   
 
 }

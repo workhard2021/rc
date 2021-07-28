@@ -1,11 +1,13 @@
 <?php
 require_once('view/pdf.php');
-trait ControllerTraitBie{
 
-      public function get_bie($id){
+trait ControllerTraitBie {
+
+      public function get($id){
+
           $res=$this->model->get_bie($id);
           $res2=$this->get("liste_realimentation","id_bie",$id);
-          require_once('view/bie_.php');
+          require_once('view/bie/bie_.php');
           require_once('view/templete2.php'); 
      }
 
@@ -17,20 +19,22 @@ trait ControllerTraitBie{
 
      public function gets_bie(){
            $res=$this->model->gets_bie();
-           require_once('view/list_bie.php');
-           require_once('view/home.php');
+           require_once('view/bie/list_bie.php');
+           require_once('view/templete.php');
      }
      public function form_critere_b(){
             $pos_sce=$this->model->gets("pos_sce");
             $depart_hta=$this->model->gets("depart_hta");
             $clients=$this->model->gets("clients");
-            require_once('view/form_critere_b.php');
+            require_once('view/critere-b/form_critere_b.php');
             require_once("view/templete2.php");
-    }
-    public function create_bie($array){
+     }
 
-          $poste=$_SESSION['session_critere_b'][0]["Liste_postes"];
-          $depart=$_SESSION['session_critere_b'][0]["departs"];
+     public function create_bie($array){
+
+          $taille=count($_SESSION["session_critere_b"]);
+          $poste=$_SESSION['session_critere_b'][$taille-1]["Liste_postes"];
+          $depart=$_SESSION['session_critere_b'][$taille-1]["departs"];
           $poste=$this->model->get("pos_sce","libelle_poste",$poste);
           $array["Id_Ps"]=$poste[0]["Id"];
           $depart=$this->model->get("depart_hta","Lib_depart",$depart);
@@ -57,12 +61,6 @@ trait ControllerTraitBie{
           header("location:http://localhost:8888/index.php?action=get_bie&id=".$id);
     }
 
-    public function getsApi($table)
-    {
-         $res=$this->model->gets($table); 
-         return $res;
-    } 
-     
     public function form_bie()
     {    
          $origine=$this->model->gets("origine");
@@ -75,7 +73,7 @@ trait ControllerTraitBie{
          $omt=$this->model->gets("omt");
          $ild=$this->model->gets("ild");
          $pos_sce=$this->model->gets("pos_sce");
-         require_once("view/form_bie.php");  
+         require_once("view/bie/form_bie.php");  
          require_once("view/templete2.php");
     }
  
