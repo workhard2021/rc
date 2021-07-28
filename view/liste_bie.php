@@ -13,16 +13,16 @@
    </thead>
    <body>
    
-   <?php foreach($donnees as $value){ ?>
+   <?php foreach($res as $value){ ?>
        <tr>
-                <td class="text-center"><?= $value["id_bie"] ?></td>
+                <td class="text-center"><?= $value["id_bie"]?></td>
                 <td class="text-center">
                   <a class="btn btn-warning col-3" href="/index.php?action=get&id=<?= $value["id_bie"] ?>"><?= $value["CritereB"] ?></a>
                 </td>
                 <td class='text-center'><?= $value["fin_indispot_bie"] ?></td>
                 <td class='text-center'> 
                   <a  class='btn btn-info' href='index.php?action=getUpdate&id=<?= $value["id_bie"]?>'>modifier</a>
-                  <a  class="btn btn-danger" href='index.php?action=delete&id=<?= $value["id_bie"]?>'> suprimer</a>
+                  <a  class="btn btn-danger" href='index.php?action=delete&id=<?= $value["id_bie"]?>'> suprimer </a>
                 </td>
         </tr>
 

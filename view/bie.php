@@ -2,7 +2,6 @@
 
 <h2 class="text-center text-info">Information de critère B</h2>
 
- 
       <h3 class="w-100 text-center"> CRITERE B <span class="text-danger"><?= $donnee["CritereB"]?></span></h3>
      
       <div class="d-flex flex-wrap align-items-flex-start justify-content-center">

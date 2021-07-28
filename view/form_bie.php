@@ -1,174 +1,168 @@
-<?php $title="Ajoute bie"; ob_start() ?>
+<?php $titre="Form bie"; 
+   $erreur=isset($_GET["erreur"])? htmlspecialchars($_GET["erreur"]):"";
+ob_start() ?>
 
-<h3 class="text-center text-dark">Ajouter un bie</h3>
-
-<form method="post" action="index.php?action=form">
-
-     <div class="d-flex m-3 align-items-flex-star justify-content-start   col-11 m-auto">
-      
+<h3 class="text-center text-info my-3"> Information suplementaire bie</h3>
+ <p class="text-center text-danger"><?= $erreur ?></p>
+<div class="p-3 m-3"><a href="http://localhost:8888/index.php?action=form_critere_b">Retour</a></div>
+<form method="post" action="index.php?action=create_bie">
+     <!-- autre  -->
+    <div class="d-flex mb-3 align-items-flex-start justify-content-evenly  col-11 m-auto">
         <div class=" m-auto mt-0 col-2 py-2">
-          <label class="pb-1" for="heur_bie">Heure bie</label><br>
-          <input type="datetime-local" id="heur_bie" name="heur_bie" placeholder="Heure bie"/>
-       </div>
-     </div>
-     <div class="d-flex m-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
-
-        <div class=" m-auto mt-0 col-2 py-2">
-            <label class="pb-1" for="post_sce">Poste source</label><br>
-             <select id="post_sce" name="post_sce"  class="form-select">
-    
-                  <?php foreach($poste_source as $value) { ?> 
-                            <option value="<?= $value["Id"]?>"><?= $value["libelle_poste"]?></option>
-                  <?php } ?>
-
-             </select>
-        </div>
-
-        <div class=" m-auto mt-0 col-2 py-2">
-            <label class="pb-1" for="post_sce">Depart</label><br>
-             <select id="post_sce" name="post_sce"  multiple class="form-select">
-                  <?php foreach($poste_source as $val){?>
-                       <optgroup label="<?= $val['libelle_poste']?>">
-
-                  <?php  foreach($departs as $value) {
-                             if($value['Id_Psce']==$val['Id']){ ?> 
-                               <option value="<?= $value['Id_depart']?>"> <?= $value["Lib_depart"]?></option>
-                  <?php }} ?>
-                  </optgroup>
-                  <?php }?>
-             </select>
-        </div>
-
-        <div class=" m-auto my-3 col-10 col-md-5">
-            <label class="pb-1" for="lieu_defaut_rex">Lieu du Defaut et Rex</label><br>
-            <textarea id="lieu_defaut_rex" name="lieu_defaut_rex" class="col-12" placeholder="commentaire"></textarea>
-        </div>
-
-    </div> 
-
-         <!-- autre  -->
-    <div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
-        
-        <div class=" m-auto mt-0 col-2 py-2">
-            <label class="pb-1" for="Lib_origin">Origine</label><br>
-             <select id="Lib_origin" name="Lib_origin"   class="form-select">
-                   <option selected>Choisir cause</option>
-                   <?php  foreach($origine as $value){ ?>
-                        <option value="<?= $value["Id_origine"] ?>"><?= $value["Lib_Origine"] ?></option>   
+             <label class="pb-1" for="Id_orig">Origine  
+             <?php if(empty($_GET["Id_orig"])){ echo "<span class='text-danger'>*</span>";}?>
+             </label><br>
+             <select value="" id="Id_orig" name="Id_orig"   class="form-select">
+                   <option value="">Choisir</option>
+                   <?php  foreach($origine as $value){
+                           $val=($value['Id_origine']==$_GET['Id_orig'])? "selected":"";
+                        ?>
+                        <option <?= $val ?> value="<?=$value["Id_origine"]?>"><?= $value["Lib_Origine"] ?></option>   
                    <?php }?>
              </select>
         </div>
         <div class=" m-auto mt-0 col-2 py-2">
-            <label class="pb-1" for="Lib_cause">Cause</label><br>
+            <label class="pb-1" for="Lib_cause">Cause
+            <?php if(empty($_GET["Id_cause"])){ echo "<span class='text-danger'>*</span>";}?>
+            </label><br>
              <select id="Lib_cause" name="Id_cause"  class="form-select">
-              <option selected>Choisir cause</option>
-                   <?php  foreach($causes as $value){ ?>
-                        <option value="<?= $value["Id_cause"] ?>"><?= $value["Lib_cause"] ?></option>   
+              <option value="" selected>Choisir</option>
+                   <?php  foreach($causes as $value){
+                             $val=($value['Id_cause']==$_GET['Id_cause'])? "selected":"";
+                        ?>
+                        <option <?= $val ?> value="<?= $value["Id_cause"] ?>"><?= $value["Lib_cause"] ?></option>   
                    <?php }?>
              </select>
         </div>
 
         <div class=" m-auto mt-0 col-2 py-2">
-
-            <label class="pb-1" for="Lib_nature">Nature</label><br>
-             <select id="Lib_nature" name="Id_nature"   class="form-select">
-                  <option selected>Choisir nature</option>
-                  <?php  foreach($nature as $value){ ?>
-                        <option value="<?= $value["Id_nature"] ?>"><?= $value["Lib_nature"] ?></option>   
+            <label class="pb-1" for="Lib_nature">Nature
+             <?php if(empty($_GET["id_nature"])){ echo "<span class='text-danger'>*</span>";}?>
+            </label><br>
+             <select id="Lib_nature" name="id_nature"   class="form-select">
+                  <option value="">Choisir</option>
+                  <?php  foreach($nature as $value){ 
+                          $val=($value['Id_nature']==$_GET['id_nature'])? "selected":"";
+                        ?>
+                        <option <?= $val ?> value="<?= $value["Id_nature"] ?>"><?= $value["Lib_nature"] ?></option>   
                    <?php }?>
              </select>
         </div>
         <div class=" m-auto mt-0 col-2 py-2">
-            <label class="pb-1" for="id_typedf"> Defaut</label><br>
-             <select id="id_typedf" name="id_typedf"   class="form-select">
-                  <option selected>Choisir type </option>
-                  <?php  foreach($defauts as $value){ ?>
-                        <option value="<?= $value["Id_type"] ?>"><?= $value["Lib_type"] ?></option>   
+            <label class="pb-1" for="id_typedf"> Defaut
+            <?php if(empty($_GET["id_typedf"])){ echo "<span class='text-danger'>*</span>";}?>
+            </label><br>
+             <select id="Id_typedef" name="Id_typedef" class="form-select">
+                  <option value="" >Choisir</option>
+                  <?php  foreach($defauts as $value){
+                           $val=($value['Id_type']==$_GET['Id_typedef'])? "selected":"";
+                        ?>
+                        <option <?= $val ?> value="<?= $value["Id_type"] ?>"><?= $value["Lib_type"] ?></option>   
                    <?php }?>
              </select>
         </div>
-
     </div> 
 
     <!-- autre -->
     <div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
-      
       <div class=" m-auto mt-0 col-2 py-2">
-          <label class="pb-1" for="Id_siege">Siege</label><br>
-           <select id="Id_siege" name="Id_siege"   class="form-select">
-                <option selected>Choisir siège</option>
-                <?php  foreach($sieges as $value){ ?>
-                        <option value="<?= $value["ID_siege"] ?>"><?= $value["Lib_siege"] ?></option>   
+          <label class="pb-1" for="Id_Siege">Siege
+          <?php if(empty($_GET["Id_Siege"])){ echo "<span class='text-danger'>*</span>";}?>
+          </label><br>
+           <select id="Id_Siege" name="Id_Siege"   class="form-select">
+                <option value="">Choisir</option>
+                <?php  foreach($siege as $value){ 
+                          $val=($value['ID_siege']==$_GET['Id_Siege'])? "selected":"";
+                      ?>
+                        <option <?= $val ?> value="<?=$value["ID_siege"]?>"><?= $value["Lib_siege"]?></option>   
                  <?php }?>
            </select>
-      </div>
-      
+      </div>     
       <div class=" m-auto mt-0 col-2 py-2">
+          <label class="pb-1" for="Id_typeJ">Type H
+          <?php if(empty($_GET["Id_typeh"])){ echo "<span class='text-danger'>*</span>";}?>
+          </label><br>
+           <select id="Id_typeh" name="Id_typeh"  class="form-select">
+               <option value="">Choisir</option>
+               <?php  foreach($typeh as $value){
 
-          <label class="pb-1" for="Id_typeJ">Type H</label><br>
-           <select id="Id_typeh" name="Id_typeh"   class="form-select">
-               <option selected>Choisir type H</option>
-               <?php  foreach($typeh as $value){ ?>
-                        <option value="<?= $value["Id_typeh"] ?>"><?= $value["Lib_typeh"] ?></option>   
+                        $val=($value['Id_typeh']==$_GET['Id_typeh'])? "selected":"";
+                    ?>
+                        <option <?= $val ?> value="<?= $value["Id_typeh"] ?>"><?= $value["Lib_typeh"] ?></option>   
                <?php }?>
            </select>
       </div>
       <div class=" m-auto mt-0 col-2 py-2">
-          <label class="pb-1" for="Id_typej">Type J</label><br>
+          <label class="pb-1" for="Id_typej">Type J
+          <?php if(empty($_GET["Id_typej"])){ echo "<span class='text-danger'>*</span>";}?>
+          </label><br>
            <select id="Id_typej" name="Id_typej"   class="form-select">
-                 <option selected>Choisir type J</option>
-                 <?php  foreach($typej as $value){ ?>
-                        <option value="<?= $value["Id_typej"] ?>"><?= $value["Lib_typej"] ?></option>   
+                 <option value="" selected>Choisir</option>
+                 <?php  foreach($typej as $value){ 
+                           $val=($value['Id_typej']==$_GET['Id_typej'])? "selected":"";
+                       ?>
+                        <option <?= $val ?> value="<?= $value["Id_typej"] ?>"><?= $value["Lib_typej"] ?></option>   
                <?php }?>
            </select>
       </div>
-
    </div> 
 
   <!-- autre  date -->
   <div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
-    
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="hpec_bie">Hpec bie </label><br>
-        <input type="datetime-local" id="hpec_bie" name="hpec_bie" placeholder="Hpec bie"/>
+        <label class="pb-1" for="hpec_bie">Hpec bie 
+        <?php if(empty($_GET["hpec_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['hpec_bie'])){  echo $_GET['hpec_bie'];}?>"  type="datetime-local" id="hpec_bie" name="hpec_bie" placeholder="Hpec bie"/>
     </div>
-
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="hdebut_bie">Hdebut bie </label><br>
-        <input type="datetime-local" id="hdebut_bie" name="hdebut_bie" placeholder="Hdebut bie"/>
+        <label class="pb-1" for="hdebut_bie">Hdebut bie
+        <?php if(empty($_GET["hdebut_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['hdebut_bie'])){  echo $_GET['hdebut_bie'];}?>" type="datetime-local" id="hdebut_bie" name="hdebut_bie" placeholder="Hdebut bie"/>
     </div>
-
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="mderomt_bie">Mderomt bie </label><br>
-        <input type="datetime-local" id="mderomt_bie" name="mderomt_bie" placeholder="M deromt bie"/>
+        <label class="pb-1" for="mderomt_bie">Mderomt bie 
+        <?php if(empty($_GET["mderomt_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['mderomt_bie'])){  echo $_GET['mderomt_bie'];}?>"  type="datetime-local" id="mderomt_bie" name="mderomt_bie" placeholder="M deromt bie"/>
     </div>
-
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="manloc_bie">Manloc bie </label><br>
-        <input type="datetime-local" id="manloc_bie" name="manloc_bie" placeholder="Manloc bie"/>
+        <label class="pb-1" for="manloc_bie">Manloc bie 
+        <?php if(empty($_GET["manloc_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['manloc_bie'])){  echo $_GET['manloc_bie'];}?>"  type="datetime-local" id="manloc_bie" name="manloc_bie" placeholder="Manloc bie"/>
     </div>
 </div> 
  <!-- date date -->
 <div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
 
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="findc_bie">Locdef bie </label><br>
-        <input type="datetime-local" id="locdef_bie" name="locdef_bie" placeholder="Locdef bie"/>
+        <label class="pb-1" for="findc_bie">Locdef bie 
+         <?php if(empty($_GET["locdef_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['locdef_bie'])){  echo $_GET['locdef_bie'];}?>" type="datetime-local" id="locdef_bie" name="locdef_bie" placeholder="Locdef bie"/>
     </div>
 
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="findc_bie">Findc bie </label><br>
-        <input type="datetime-local" id="findc_bie" name="findc_bie" placeholder="Findc bie"/>
+        <label class="pb-1" for="findc_bie">Findc bie 
+        <?php if(empty($_GET["findc_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['findc_bie'])){  echo $_GET['findc_bie'];}?>" type="datetime-local" id="findc_bie" name="findc_bie" placeholder="Findc bie"/>
     </div>
 
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="fin_indispod_bie">Fin indispod bie </label><br>
-        <input type="datetime-local" id="fin_indispod_bie" name="fin_indispod_bie" placeholder="Find indispod bie"/>
+        <label class="pb-1" for="fin_indispod_bie">Fin indispod bie 
+        <?php if(empty($_GET["fin_indispod_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['fin_indispod_bie'])){  echo $_GET['fin_indispod_bie'];}?>" type="datetime-local" id="fin_indispod_bie" name="fin_indispod_bie" placeholder="Find indispod bie"/>
     </div>
 
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="fin_indispot_bie">Fin d'insdispot bie</label><br>
-        <input type="datetime-local" id="fin_indispot_bie" name="fin_indispot_bie" placeholder="Find indispot bie"/>
+        <label class="pb-1" for="fin_indispot_bie">Fin d'insdispot bie 
+        <?php if(empty($_GET["fin_indispot_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input value="<?php if(isset($_GET['fin_indispot_bie'])){  echo $_GET['fin_indispot_bie'];}?>"  type="datetime-local" id="fin_indispot_bie" name="fin_indispot_bie" placeholder="Find indispot bie"/>
     </div>
 
 </div>
@@ -176,69 +170,80 @@
 <div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
     
        <div class=" m-auto mt-0 col-2 py-2">
-          <label class="pb-1" for="premappelcex_bie">Prémier appel cex </label><br>
-          <input type="datetime-local" id="premappelcex_bie" name="premappelcex_bie" placeholder="Premier appel cex"/>
+          <label class="pb-1" for="premappelcex_bie">Prémier appel cex
+            <?php if(empty($_GET["premappelcex_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+         </label><br>
+          <input value="<?php if(isset($_GET['premappelcex_bie'])){  echo $_GET['premappelcex_bie'];}?>" type="datetime-local" id="premappelcex_bie" name="premappelcex_bie" placeholder="Premier appel cex"/>
        </div>
 
       <div class=" m-auto mt-0 col-2 py-2">
-          <label class="pb-1" for="premactactcex_bie">Prémier contact cex </label><br>
-          <input type="datetime-local" id="premactactcex_bie" name="premactactcex_bie" placeholder="Premier contact cex"/>
+          <label class="pb-1" for="premctactcex_bie">Prémier contact cex 
+          <?php if(empty($_GET["premctactcex_bie"])){ echo "<span class='text-danger'>*</span>";}?>
+          </label><br>
+          <input value="<?php if(isset($_GET['premctactcex_bie'])){  echo $_GET['premctactcex_bie'];}?>" type="datetime-local" id="premctactcex_bie" name="premctactcex_bie" placeholder="Premier contact cex"/>
        </div>
-
        <div class=" m-auto mt-0 col-2 py-2">
-           <label class="pb-1" for="nbrenvoi_defaut">Nbrenvoi defaut</label><br>
-           <input type="number" id="nbrenvoi_defaut" name="nbrenvoi_defaut" />
+           <label class="pb-1" for="nbrenvoi_defaut">Nbrenvoi defaut
+           <?php if(empty($_GET["nbrenvoi_defaut"])){ echo "<span class='text-danger'>*</span>";}?>
+           </label><br>
+           <input value="<?php if(isset($_GET['nbrenvoi_defaut'])){  echo $_GET['nbrenvoi_defaut'];}?>" type="number" id="nbrenvoi_defaut" name="nbrenvoi_defaut" />
       </div>
-
-    <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="id_transf">Transformateur</label><br>
-        <select  id="id_transf" name="id_transf" multiple class="form-select">
-           <option selected>Choisir Transfo</option>
-           <?php foreach($transfo as $value){ ?>
-                    <option value="<?= $value["Id_transf"] ?>"><?= $value["Lib_transf"] ?></option>   
-           <?php }?>
-       </select>
-    </div>
-
 </div>
 
 <!-- autre omt  -->
 <div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
-    
+
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="nb_omt_man">Nb omt man</label><br>
+        <label class="pb-1" for="nb_omt_man">Nb omt man
+        <?php if(empty($_GET["nb_omt_man"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
         <select  id="nb_omt_man" name="nb_omt_man" multiple class="form-select">
-        <option selected>Choisir Nb omt man</option>
-        <?php   foreach($omt as $value){ ?>
-                        <option value="<?= $value["Id_omt"] ?>"><?= $value["Lib_omt"] ?></option>   
+        <option value="" >Choisir</option>
+        <?php   foreach($omt as $value){ 
+
+                    $val=($value['Id_omt']==$_GET['nb_omt_man'])? "selected":"";
+                ?>
+                 <option <?= $val ?> value="<?= $value["Id_omt"] ?>"><?= $value["Lib_omt"] ?></option>   
          <?php }?>
        </select>
     </div>
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="nb_omt_def">Nb omt def</label><br>
+        <label class="pb-1" for="nb_omt_def">Nb omt def
+        <?php if(empty($_GET["nb_omt_def"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
         <select  id="nb_omt_def" name="nb_omt_def" multiple class="form-select">
-             <option selected>Choisir Nb omt def</option>
-           <?php   foreach($omt as $value){ ?>
-                        <option value="<?= $value["Id_omt"] ?>"><?= $value["Lib_omt"] ?></option>   
+             <option value="">Choisir</option>
+           <?php   foreach($omt as $value){
+                     $val=($value['Id_omt']==$_GET['nb_omt_def'])? "selected":"";
+                   ?>
+                   <option <?= $val ?> value="<?= $value["Id_omt"] ?>"><?= $value["Lib_omt"] ?></option>   
            <?php }?>
        </select>
     </div>
 
     <div class=" m-auto mt-0 col-2 py-2">
-       <label class="pb-1" for="nb_ild_visu">Nb ild visu</label><br>
+       <label class="pb-1" for="nb_ild_visu">Nb ild visu
+       <?php if(empty($_GET["nb_ild_visu"])){ echo "<span class='text-danger'>*</span>";}?>
+       </label><br>
        <select  id="nb_ild_visu" name="nb_ild_visu" multiple class="form-select">
-       <option selected>Choisir Nb ild visu</option>
-           <?php  foreach($ild as $value){ ?>
-                        <option value="<?= $value["Id_ild"] ?>"><?= $value["lib_ild"] ?></option>   
+       <option value="">Choisir Nb ild visu</option>
+            <?php  foreach($ild as $value){
+                $val=($value['Id_ild']==$_GET['nb_ild_visu'])? "selected":"";
+            ?>
+            <option <?= $val ?> value="<?= $value["Id_ild"] ?>"><?= $value["lib_ild"] ?></option>   
            <?php }?>
        </select>
     </div>
     <div class=" m-auto mt-0 col-2 py-2">
-       <label class="pb-1" for="nb_ild_def">Nb ild def</label><br>
+       <label class="pb-1" for="nb_ild_def">Nb ild def
+       <?php if(empty($_GET["nb_ild_def"])){ echo "<span class='text-danger'>*</span>";}?>
+       </label><br>
        <select id="nb_ild_def" name="nb_ild_def" multiple class="form-select">
-       <option selected>Choisir Nb ild def</option>
-           <?php  foreach($ild as $value){ ?>
-                        <option value="<?= $value["Id_ild"] ?>"><?= $value["lib_ild"] ?></option>   
+       <option  value="">Choisir</option>
+           <?php  foreach($ild as $value){ 
+                 $val=($value['Id_ild']==$_GET['nb_ild_def'])? "selected":"";
+            ?>
+            <option  <?= $val ?> value="<?= $value["Id_ild"] ?>"><?= $value["lib_ild"] ?></option>   
            <?php }?>
        </select>
     </div>
@@ -249,25 +254,40 @@
 <div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
     
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="dsp1">Dispatch 1</label><br>
-        <input type="text" id="dsp1" name="dsp1" placeholder="Dispatcher 1"/>
+        <label class="pb-1" for="dsp1">Dispatch 1
+        <?php if(empty($_GET["dsp1"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input type="text" id="dsp1" value="<?php if(isset($_GET['dsp1'])){  echo $_GET['dsp1'];}?>" name="dsp1" placeholder="Dispatcher 1"/>
     </div>
     <div class=" m-auto mt-0 col-2 py-2">
-        <label class="pb-1" for="dsp2">Dispatch 2</label><br>
-        <input type="text" id="dsp2" name="dsp2" placeholder="Dispatcher 2"/>
+        <label class="pb-1" for="dsp2">Dispatch 2
+        <?php if(empty($_GET["dsp2"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input type="text" id="dsp2" value="<?php if(isset($_GET['dsp2'])){  echo $_GET['dsp2'];}?>" name="dsp2" placeholder="Dispatcher 2"/>
     </div>
-
+    <div class=" m-auto mt-0 col-2 py-2">
+        <label class="pb-1" for="Id_resp">Id_resp
+        <?php if(empty($_GET["Id_resp"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input type="datetime-local" value="<?php if(isset($_GET['Id_resp'])){  echo $_GET['Id_resp'];}?>" id="Id_resp" name="Id_resp" placeholder="Id_resp"/>
+     </div>
+    <div class=" m-auto mt-0 col-2 py-2">
+        <label class="pb-1" for="Heure_Bie">Heure bie
+        <?php if(empty($_GET["Heure_Bie"])){ echo "<span class='text-danger'>*</span>";}?>
+        </label><br>
+        <input type="datetime-local" value="<?php if(isset($_GET['Heure_Bie'])){  echo $_GET['Heure_Bie'];}?>" id="Heure_Bie" name="Heure_Bie" placeholder="Heure bie"/>
+     </div>    
 </div>
-
-
+<div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
+       <div class=" m-auto mt-0 col-8 py-2">
+         <label class="pb-1" for="Lieu_def_rex">Lieu def rex
+             <?php if(empty($_GET["Lieu_def_rex"])){ echo "<span class='text-danger'>*</span>";}?>
+         </label><br>
+         <textarea id="Lieu_def_rex" class="w-100" rows="5" name="Lieu_def_rex"><?php if(isset($_GET['Lieu_def_rex'])){  echo $_GET['Lieu_def_rex'];}?></textarea>
+       </div>
+</div>
  <div class="my-3 p-5 col-11 m-auto">
     <button class="btn btn-info col-4 d-block m-auto">Envoyer</button>
  </div>
-
-      
-      
-</form>
-
-
-
-<?php $container=ob_get_clean() ?>
+<?php $container=ob_get_clean();
+?>
