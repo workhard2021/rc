@@ -8,6 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     <title><?= $titre ?></title>
     <style>
+
+       *{
+          font-family:sans-serif;
+       }
         #clients{
              height:70px;
              overflow-y:scroll;
@@ -29,6 +33,8 @@
              text-decoration:none;
              transition:all 0.5s; 
              border-radius:10px;  
+             font-size:1.2em;
+             
          }
          .item:hover{
            background-color:rgba(0, 0, 0, 0.5);
