@@ -1,5 +1,4 @@
 <?php
-
 require_once 'ModelTraitBie.class.php';
  class Model{
 

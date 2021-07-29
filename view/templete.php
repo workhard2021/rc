@@ -40,7 +40,6 @@
       <div id="container"> 
          <?= $container ?>
       </div>
-    
 </script>
 </body>
 </html>

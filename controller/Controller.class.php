@@ -1,6 +1,5 @@
 <?php 
 require_once 'model/Model.class.php';
-require_once('model/TableRealim.class.php');
 require_once('model/Bie.class.php');
 require_once('CritereB.class.php');
 
