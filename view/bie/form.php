@@ -21,6 +21,7 @@ ob_start() ?>
                    <?php }?>
              </select>
         </div>
+        
         <div class=" m-auto mt-0 col-2 py-2">
             <label class="pb-1" for="Lib_cause">Cause
             <?php if(empty($_GET["Id_cause"])){ echo "<span class='text-danger'>*</span>";}?>

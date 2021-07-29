@@ -30,7 +30,7 @@ class CritereRoute{
               }else{
                   $params.=$key."=".$value."&";
               }
-              $array[$value]=htmlspecialchars($value);
+              $array[$key]=htmlspecialchars($value);
         }
        
         if($erreur!=""){ 
@@ -47,13 +47,11 @@ class CritereRoute{
          $id= isset($_GET['id'])? intval($_GET['id']):false;
          if($id!=''){
                $critere_b->delete($id);
-
          }else{
            
             throw new Exception("UNE ERREUR ID DANS LA ROUTE SUPPRIMER CRITERE EXISTE PAS");
-        }       
+        }      
       }
-
       public function gets(CritereB $critere_b){
             $critere_b->gets();
       }

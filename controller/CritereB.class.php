@@ -15,7 +15,7 @@ class CritereB{
    }
    public function gets(){
         require_once("view/critere/liste.php");
-         require_once('view/templete2.php');
+         require_once('view/templete.php');
    }
 
    public function delete($id)

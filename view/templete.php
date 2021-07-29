@@ -18,6 +18,9 @@
         #container{
             position:relative;
         }
+        ul{
+             list-style-type:none;
+        }
     </style>
 </head>
 <body>
