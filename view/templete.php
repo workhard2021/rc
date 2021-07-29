@@ -17,6 +17,8 @@
         }
         #container{
             position:relative;
+            top:50px;
+            
         }
         ul{
              list-style-type:none;
@@ -45,10 +47,9 @@
                     <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=gets&table=client">Liste client</a> 
                 </div>
            </nav>
-
       </header>
-
-
+      <section>
+          
       <div id="container"> 
          <?= $container ?>
       </div>

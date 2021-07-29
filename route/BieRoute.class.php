@@ -1,19 +1,19 @@
 <?php
 
-require_once ('controller/Bie_c.class.php');
+require_once ('controller/Bie.class.php');
 class BieRoute{
      
     public function __construct($nameMethod)
     {
         if(method_exists(__CLASS__,$nameMethod)){
-            return self::$nameMethod(new Bie_c());
+            return self::$nameMethod(new Bie());
         }else{
 
              throw new Exception("route existe pas".__CLASS__);  
         }  
     }
 
-    public  function delete(Bie_c $bie){
+    public  function delete(Bie $bie){
 
         $id= isset($_GET['id'])? intval($_GET['id']):false;
         if(!$id){
@@ -22,7 +22,7 @@ class BieRoute{
         $bie->delete($id);
     }
 
-    public function form(Bie_c $bie){
+    public function form(Bie $bie){
 
         if((isset($_SESSION["session_critere_b"]) && count($_SESSION["session_critere_b"])>0)){
 
@@ -34,7 +34,7 @@ class BieRoute{
         }
     }
 
-    public  function get(Bie_c $bie){
+    public  function get(Bie $bie){
 
         $id=isset($_GET['id'])? intval($_GET['id']):false;
         if($id){ 
@@ -45,11 +45,11 @@ class BieRoute{
         }
     }
 
-    public function gets(Bie_c $bie){
+    public function gets(Bie $bie){
         $bie->gets();   
     }
 
-    public  function create(Bie_c $bie){
+    public  function create(Bie $bie){
 
              $array=$_POST;
              $erreur="";
@@ -77,7 +77,7 @@ class BieRoute{
                     exit();
              }        
     }
-    public  function pdf(Bie_c $bie){
+    public  function pdf(Bie $bie){
 
         $id= isset($_GET['id'])? intval($_GET['id']):false;
         if(!$id){

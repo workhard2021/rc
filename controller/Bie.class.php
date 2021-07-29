@@ -6,7 +6,7 @@ require_once("vendor/Autoload.php");
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-class Bie_c{
+class Bie{
 
       private $model;
       private $table="liste_bie";
