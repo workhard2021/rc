@@ -18,8 +18,8 @@
         #container{
             position:relative;
             top:50px;
-            
         }
+
         ul{
              list-style-type:none;
         }
@@ -31,28 +31,49 @@
          .item:hover{
            background-color:rgba(0, 0, 0, 0.5);
         }
-
+        #footer{
+              position:relative;
+              top:100px;
+        }
+        #img{
+             position:relative;
+             width:100%;
+             left:100%;
+             height:100%;
+             height:140px;
+        }
+        #img img{
+             position:relative;
+             object-fit:cover;
+        }
     </style>
 </head>
 <body>
       <heade class="w-100 header">
 
            <nav class="py-3 mb-3 bg-info d-flex justify-content-evently">
-                <div class="col-md-3 col-5  text-center">
-                   <a class="p-1 text-light item " href="http://localhost:8888/index.php?action=gets&table=bie">Accueil</a>
-                   <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=critere">Ajouter bie</a>
-                </div>
-                <div class="col-md-3 col-5 text-center">
+                <div class="col-md-3 col-12 col-md-12 text-center">
+
+                    <a class="p-1 text-light item " href="http://localhost:8888/index.php?action=gets&table=bie">Accueil</a>
+                    <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=critere">Ajouter bie</a> |
                     <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=client">Ajouter client</a>
                     <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=gets&table=client">Liste client</a> 
-                </div>
+              
+               </div>
            </nav>
       </header>
+
       <section>
-          
-      <div id="container"> 
-         <?= $container ?>
-      </div>
-</script>
+           <div class="image">
+               <img src="view/images/edm.png" alt="...">
+           </div>
+           <div id="container"> 
+             <?= $container ?>
+           </div>
+           <footer id="footer">
+                <div class="mt-3 bg-light">
+                     <p class="py-4  text-ligth text-center"> &copy 2021-Electricité de Mayotte-Toute reproduction interdite</p>
+                </div>
+           </footer>
 </body>
 </html>
