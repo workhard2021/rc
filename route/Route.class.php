@@ -1,13 +1,6 @@
 <?php
  require_once 'controller/Controller.class.php';
- require_once 'model/Bie.class.php';
- require_once 'RouteTraitBie.php';
- require_once("vendor/Autoload.php");
- use Dompdf\Dompdf;
- use Dompdf\Options;
 class Route{
-
-    use RouteTraitBie;
     public function __construct($nameMethod)
     {
         if(method_exists(__CLASS__,$nameMethod)){
@@ -73,7 +66,7 @@ class Route{
 
                 throw new Exception("PARAMETTRE COLONNE EXISTE PAS ROUTE delete");
         }  
-        $res=$controller->delete($table,$colonne,$id);
+        $controller->delete($table,$colonne,$id);
         echo json_encode("supprimé");
         
     }
@@ -81,12 +74,11 @@ class Route{
     public static function create(Controller $controller){
 
         $table= isset($_GET['table'])? htmlspecialchars($_GET['table']):false;
-        $obj=file_get_contents("php://input");
-        $array=json_decode($obj,true);
-
+        $array=$_POST;
         if($table){
-            $res=$controller->create($table,$array);
-            echo "enregistré";
+
+              $controller->create($table,$array);
+
         }else{
             
             throw new Exception("UNE ERREUR TABLE MAQNUE DANS LA ROUTE CREATE");
@@ -98,9 +90,7 @@ class Route{
         $table= isset($_GET['table'])? htmlspecialchars($_GET['table']):false;
         $colonne= isset($_GET['colonne'])? htmlspecialchars($_GET['colonne']):false;
         $id= isset($_GET['id'])? intval($_GET['id']):false;
-        $array=file_get_contents("php://input");
-        $array=json_decode($array,true);
-        $res=false;
+        $array=$_POST;
         if(count($array)==0){
             
              throw new Exception("REMPLIR TOUT LES CHAMPS CRETERE B");
@@ -118,26 +108,10 @@ class Route{
 
              throw new Exception("UNE ERREUR DANS LA ROUTE UPDATE ID EXISTE PAS");
         }
-
-        $res=$controller->update($table,$array,$colonne,$id);
-        echo json_encode("Mise à jour effectuée"); 
+        $controller->update($table,$array,$colonne,$id);
+        
     } 
-    public static function pdf(Controller $controller){
-
-        $id= isset($_GET['id'])? intval($_GET['id']):false;
-        if(!$id){
-            throw new Exception("UNE ERREUR DANS LA ROUTE PDF ID EXISTE PAS");
-        }
-        $html=$controller->get_bie_pdf($id);
-        $option=new Options();
-        $option->set("defautlFont","courier");
-        $dompdf=new Dompdf($option);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper("A4","portrait");
-        $dompdf->render();
-        $ficher="doc-".date("d-m-Y");
-        $dompdf->stream($ficher);
-    }
+    
 
    
 

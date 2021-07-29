@@ -4,8 +4,8 @@ ob_start() ?>
 
 <h3 class="text-center text-info my-3"> Information suplementaire bie</h3>
  <p class="text-center text-danger"><?= $erreur ?></p>
-<div class="p-3 m-3"><a href="http://localhost:8888/index.php?action=form_critere_b">Retour</a></div>
-<form method="post" action="index.php?action=create_bie">
+<div class="p-3 m-3"><a href="http://localhost:8888/index.php?action=gets&table=critere">Retour</a></div>
+<form method="post" action="index.php?action=create&table=bie">
      <!-- autre  -->
     <div class="d-flex mb-3 align-items-flex-start justify-content-evenly  col-11 m-auto">
         <div class=" m-auto mt-0 col-2 py-2">

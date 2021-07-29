@@ -1,4 +1,10 @@
-<?php  ob_start(); $titre="Liste bie";?>
+<?php  ob_start(); $titre="Liste bie";
+  $message="sdsdsd";
+  $message=isset($_GET['message'])? htmlspecialchars($_GET['message']):"";
+?>
+  
+  <h3 class="py-2 my-2 text-center ">LISTE BIE</h3>
+  <p class="py-2 my-2 text-center text-success"><?= $message ?></p>
    <table  class='table'>
           <thead>
             <tr>
@@ -13,11 +19,11 @@
             <tr>
                   <td class='text-center'><?= $value['id_bie'] ?></td>
                   <td class='text-center'>
-                     <a class='btn btn-warning w-100' href="/index.php?action=get_bie&id=<?=$value['id_bie']?>"> <?=$value['CritereB']?></a>
+                     <a class='btn btn-warning w-100' href="/index.php?table=bie&action=get&id=<?=$value['id_bie']?>"><?=$value['CritereB']?></a>
                   </td>
                   <td class='text-center'><?=$value['fin_indispot_bie']?></td>
                   <td class='text-center'> 
-                   <a class='btn btn-danger' href="index.php?action=delete_bie&table=liste_bie&colonne=id_bie&id=<?=$value['id_bie']?>">suprimer</a>
+                   <a class='btn btn-danger' href="index.php?action=delete&table=bie&id=<?=$value['id_bie']?>">supprimer</a>
                 </td>
             </tr>
        <?php } ?>

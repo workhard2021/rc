@@ -1,4 +1,5 @@
 <?php
+
 require_once 'ModelTraitBie.class.php';
  class Model{
 
@@ -11,8 +12,13 @@ require_once 'ModelTraitBie.class.php';
          }
 
 
-        function gets($table){
+        function gets($table,$ordre=""){
+
              $requette="SELECT * FROM $table";
+             if($ordre!=""){
+               $requette.=" ORDER BY $ordre DESC";
+             }
+
              $req=$this->db->prepare($requette);
              $req->execute();
              return $req->fetchAll(PDO::FETCH_ASSOC);   
@@ -55,22 +61,21 @@ require_once 'ModelTraitBie.class.php';
           public function update($table,Array $array,$colonne,$id){
 
               $arrayValue=[];
-              $requette="UPDATE $table SET"; 
+              $requette="UPDATE $table SET "; 
               $i=0;
 
               foreach($array as $key => $value){  
-
                    $i++;
                    if($i<count($array)){ 
-                        $requette=$requette.$key.'=?,';
+                        $requette=$requette.$key.'=? ,';
                         $arrayValue[]=$value;
                     }else{
                         $requette=$requette.$key.'=?';
                         $arrayValue[]=$value;
                     }     
                }
-               
                $arrayValue[]=$id;
+  
                $requette.=" WHERE $colonne=?";
                $req=$this->db->prepare($requette);
                return $req->execute($arrayValue);

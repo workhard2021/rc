@@ -1,8 +1,9 @@
 <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' crossorigin='anonymous'>
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'  crossorigin='anonymous'></script> 
 <?php 
-function pdf($res,$res2){
 
+function pdf($res,$res2){
+     
   $html="";
   $somme_client=0;
   $somme_critere_b=0; 
@@ -128,8 +129,8 @@ $html.="<tr class='text-center'>
 $html.="<tr class='text-center'>
                <td colSpan='3 ' class='text-dark'><b>Total</b><td>
                <td><span class='px-2  bg-danger text-dark m-2'><b>".$somme_client."</b></span></td>
-               <td><span class='px-2 bg-danger text-dark m-2'><b>".$somme_critere_b ."</b></span></td>
-    <tr>
+              <td><span class='px-2 bg-danger text-dark m-2'><b>".$somme_critere_b ."</b></span></td>
+      <tr>
     </tbody></table>
     </div>";
     return $html ;

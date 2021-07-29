@@ -10,7 +10,7 @@
 
 <h2 class="text-center text-info mt-3">Rapport critère B</h2>
    <div class="m-3 col-2 bg-light my-2 p-1">
-         <a href="http://localhost:8888/index.php?action=pdf&id=<?= $res['id_bie']?>">Télécharger Pdf</a>
+         <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a>
     </div>
 
    <h3 class="w-100 text-center"> CRITERE B <span class="text-danger"> <?=$res["CritereB"]?></span></h3>

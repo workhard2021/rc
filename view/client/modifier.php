@@ -1,39 +1,51 @@
-<?php $titre="Ajoute critere b"; 
-
-  $erreur="";
+<?php  ob_start(); 
+ 
+  $titre="FORMULAIRE CLEINT"; 
+  $erreur="";$message="";
   if(isset($_GET['erreur'])){ 
 
        $erreur="<div class='text-center text-danger'>".htmlspecialchars($_GET['erreur'])."</div>";
   }
-  $count=isset($_SESSION['session_critere_b'])? count($_SESSION['session_critere_b']):0;
+  if(isset($_GET['message'])){ 
 
-ob_start()?>
+    $message="<div class='text-center text-success'>".htmlspecialchars($_GET['message'])."</div>";
+  }
+  
 
-<h3 class="text-center text-dark">Ajouter un bie</h3>
- <div class="d-flex align-items-center justify-coneten-evently my-3 py-3">
- <a class="m-auto" href="http://localhost:8888/index.php?action=gets_bie">Home</a>
- <a class="m-auto" href="http://localhost:8888/index.php?action=liste_critere_b">Liste critere B <span class="text-danger" id="nbr"><?= $count?></span></a>
- </div>
+?>
+
+<h3 class="text-center text-dark my-3">Modifier Client</h3>
   <?= $erreur?>
-<form id="send" method="post" action="index.php?action=ajouter_critere_b">
+  <?=$message ?>
+<form id="send" method="post" action="index.php?action=update&table=client&id=<?=$res['Id_transf']?>">
 
      <div class="d-flex mb-3 align-items-flex-center justify-content-center col-11 m-auto  flex-wrap">
+        
         <div class="col-5 col-md-2 py-2 text-center m-auto">
-            <label class="pb-1" for="postes">Poste source</label><br>
-             <select id="Liste_postes"   name="Liste_postes"  class="form-select">    
-                   <?php foreach($pos_sce as $value){   ?>
-                       <option data="<?= $value['Id']?>" value="<?= $value["libelle_poste"]?>"><?= $value["libelle_poste"] ?></option>;
+            <label class="pb-1" for="Id_posSce">Poste source
+            </label><br>
+             <select id="Id_posSce"   name="Id_posSce"  class="form-select">   
+                  <option value="" selected>Choisir</option>   
+                   <?php foreach($pos_sce as $value){  
+                        $valid=($value['Id']==$res['Id_posSce'])? "selected":"";
+                    ?>
+                   <option <?= $valid ?> value="<?= $value["Id"]?>"><?= $value["libelle_poste"] ?></option>;
                   <?php }?> 
              </select>
         </div>
+
         <div class="col-5 col-md-2 py-2 text-center m-auto">
-            <label class="pb-1" for="departs">Depart</label><br>
-             <select id="departs" name="departs" class="form-select"> 
+            <label class="pb-1" for="Id_depart">Depart 
+            </label><br>
+             <select id="Id_depart" name="Id_depart" class="form-select"> 
+                  <option value="" selected>Choisir</option> 
                    <?php  foreach($pos_sce as $val){ ?>
                     <optgroup label="<?= $val["libelle_poste"] ?>">
                     <?php  foreach($depart_hta as $value){ 
-                                if($value["Id_Psce"]==$val["Id"]){ ?>
-                                    <option value="<?= $value["Lib_depart"]?>"><?= $value["Lib_depart"] ?></option>;
+                                if($value["Id_Psce"]==$val["Id"]){
+                                    $valid=($value['Id_depart']==$res['Id_depart'])? "selected":"";
+                                 ?>
+                                    <option <?= $valid ?> value="<?= $value["Id_depart"]?>"><?= $value["Lib_depart"] ?></option>;
                                 <?php } ?>
                      <?php }?> 
                      </optgroup> 
@@ -41,56 +53,65 @@ ob_start()?>
               </select>
         </div>
 
-        <div class="col-5 col-md-3 py-2 text-center m-auto">
-            <label class="pb-1" for="clients">Transformateur</label><br>
-             <div  id="clients" class="form-select" >
-                   <?php  foreach($depart_hta as $val){ ?>
+        <div class="col-5 col-md-2 py-2 text-center m-auto">
+            
+            <label class="pb-1" for="Id_commune">Commune</label><br>
+             <select id="Id_commune"   name="Id_commune"  class="form-select">  
+                   <option value="" selected>Choisir</option>   
+                   <?php foreach($liste_commune as $value){  
 
-                    <div> <span class="text-info"><?= $val["Lib_depart"]?></span><br>
-                    <?php  foreach($clients as $value){ 
-                                if($value["Id_depart"]==$val["Id_depart"]){ ?>
-
-                                    <label for="<?= $value["Id_transf"]?>"><?= $value["Lib_transf"]?></label>
-                                    <input id="<?=$value["Id_transf"]?>" name="<?= $value["Lib_transf"] ?>" type="checkbox" value="<?= $value["nb_clients"]?>" /><br>
-                                <?php } ?>
-                     <?php }?> 
-                   </div> 
-                    <?php } ?> 
-            </div>
-       </div>
-
-       <!-- <div class=" col-5 col-md-2 py-2 text-center m-auto">
-            <label class="pb-1" for="nbcli_poste">Nombre de client</label><br>
-            <input type="text" id="nbcli_poste" name="nbcli_poste" class="col-12" placeholder="nombre de client"/>
-       </div> -->
+                        $valid=($value['Id_Commune']==$res['Id_commune'])? "selected":""
+                    ?>
+                   <option <?= $valid ?>  value="<?= $value["Id_Commune"]?>"><?= $value["Lib_Commune"] ?></option>;
+                  <?php }?> 
+             </select>
+        </div>
 
     </div> 
     <!-- autre -->
     <div class="d-flex mb-3 align-items-flex-center justify-content-center col-11 m-auto flex-wrap">
+      
+        <div class="col-5 col-md-2 py-2 text-center m-auto">
+            <label class="pb-1" for="Id_village">Village</label><br>
+             <select id="Id_village" name="Id_village" class="form-select"> 
+                   <option value="" selected>Choisir</option> 
+                   <?php  foreach($liste_commune as $val){ ?>
+                    <optgroup label="<?= $val["Lib_Commune"] ?>">
+                    <?php  foreach($liste_village as $value){ 
 
-      <div class="col-5 col-md-2 py-2 text-center m-auto">
-        <label class="pb-1" for="date_incident">Début de l'incident</label><br>
-        <input type="datetime-local" id="date_incident" name="date_incident" placeholder="debut"/>
-      </div>
+                                $valid=($value['Id_village']==$res['Id_village'])? "selected":"";
 
-      <div class="col-5 col-md-2 py-2 text-center m-auto">
-        <label class="pb-1" for="date_realim">Heure de réalimentation</label><br>
-        <input type="datetime-local" id="date_realim" name="date_realim" placeholder="fin"/>
-      </div> 
+                                if($value["id_commune"]==$val["Id_Commune"]){?>
 
-      <div class="col-5 col-md-2 py-2 text-center m-auto">
-        <label class="pb-1" for="mode_realim">Mode réalimentation</label><br>
-        <input type="mode_realim" id="mode_realim" name="mode_realim" placeholder="Mode realim"/>
-      </div>  
- <div class="my-3 p-5 col-11 m-auto">
-    <button class="btn btn-info col-4 d-block m-auto">Ajouter +</button>
- </div>
+                                    <option <?= $valid ?> value="<?= $value["Id_village"]?>"><?= $value["lib_village"] ?></option>;
+                               
+                                <?php } ?>
+                     <?php }?> 
+                     </optgroup> 
+                    <?php } ?> 
+              </select>
+        </div>
+        <div class="col-5 col-md-2 py-2 text-center m-auto">
+           <label class="pb-1" for="nb_clients">Nombre de client</label><br>
+           <input type="number" id="nb_clients" value="<?php echo $res['nb_clients'];?>" name="nb_clients" placeholder="Nombre de client"/>
+        </div>
+
+        <div class="col-5 col-md-2 py-2 text-center m-auto">
+           <label class="pb-1" for="Num_transf">Numero tranfo</label><br>
+           <input type="number" id="Num_transf" value="<?php echo $res['Num_transf'];?>" name="Num_transf" placeholder="Numéro transfo"/>
+        </div>
+        <div class="col-5 col-md-2 py-2 text-center m-auto">
+           <label class="pb-1" for="Lib_transf">Libelle transfo</label><br>
+           <input type="text" id="Lib_transf" value="<?php  echo $res['Lib_transf'];?>" name="Lib_transf" placeholder="Libelle"/>
+        </div>
+    </div>
+  <div class="my-3 p-5 col-11 m-auto">
+        <button class="btn btn-info col-4 d-block m-auto">Modifier</button>
+   </div>
+
 </form>
 
 <script>
-
-
-
 const nbcli_poste=document.getElementById("nbcli_poste");
 const date_realim=document.getElementById("date_realim");
 
