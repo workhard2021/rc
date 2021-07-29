@@ -21,22 +21,34 @@
         ul{
              list-style-type:none;
         }
+        .item{
+             text-decoration:none;
+             transition:all 0.5s; 
+             border-radius:10px;  
+         }
+         .item:hover{
+           background-color:rgba(0, 0, 0, 0.5);
+        }
+
     </style>
 </head>
 <body>
-      <heade class="w-100" id="header">
-           <nav class="p-2  bg-info p-3 d-flex w-100 ">
-                <div class="col-3">
-                  <a class="p-1 text-light mx-2" href="http://localhost:8888/index.php?action=gets&table=bie">Accueil</a>
-                   <a class="p-1 text-light mx-2" href="http://localhost:8888/index.php?action=form&table=critere">Ajouter bie</a>
+      <heade class="w-100 header">
+
+           <nav class="py-3 mb-3 bg-info d-flex justify-content-evently">
+                <div class="col-md-3 col-5  text-center">
+                   <a class="p-1 text-light item " href="http://localhost:8888/index.php?action=gets&table=bie">Accueil</a>
+                   <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=critere">Ajouter bie</a>
                 </div>
-                <div class="col-3">
-                   <a class="p-1 text-light mx-2" href="http://localhost:8888/index.php?action=form&table=client">Ajouter client</a>
-                    <a class="p-1 text-light mx-2" href="http://localhost:8888/index.php?action=gets&table=client">Liste client</a> 
+                <div class="col-md-3 col-5 text-center">
+                    <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=client">Ajouter client</a>
+                    <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=gets&table=client">Liste client</a> 
                 </div>
-                 
            </nav>
+
       </header>
+
+
       <div id="container"> 
          <?= $container ?>
       </div>

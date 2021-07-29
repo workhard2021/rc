@@ -6,9 +6,8 @@
      $somme_critere_b+=$value["critere_B"];
    }
  ?> 
-  
-
 <h2 class="text-center text-info mt-3">Rapport critère B</h2>
+
    <div class="m-3 col-2 bg-light my-2 p-1">
          <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a>
     </div>
@@ -22,7 +21,6 @@
          <span class="m-auto p-1"><b>N° </b><?=$res["Num_bie"]?></span><br>
          <span class="m-auto p-1"><b>Date:</b> <?=$res["Heure_Bie"]?></span>
      </div> 
-
      <div class="m-auto col-11 col-md-5 bg-light my-2 p-1">
             <span class="my-2">Origine:</span>  
             <span class="mx-2"> <?=$res["Lib_Origine"]?></span><br>
@@ -33,7 +31,7 @@
             <span class="my-2">Type defaut:</span>  
             <span class="mx-2"> <?=$res["Lib_type"]?></span><br>
       </div>
-     <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
+      <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
             <span class="my-2">Siege:</span>  
             <span class="mx-2"> <?=$res["Lib_siege"]?></span><br>
             <span class="my-2">Post source:</span>  
@@ -43,7 +41,6 @@
             <span class="my-2">Nombre clients:</span>  
             <span class="mx-2"><?= $somme_client ?></span><br>
        </div>
-
        <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
             <span class="my-2">TypeJ :</span>  
             <span class="mx-2"> <?=$res["Lib_typej"]?></span><br>

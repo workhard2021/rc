@@ -33,8 +33,8 @@
               <div class='text-center p-3 col-11 col-md-9 m-auto text-danger bg-info'>
                     <span class='mx-3'><b>CRITERE B TOTAL :</b></span> <span class='mx-3'>$somme_critere_b</span>
              </div>
-             <div class='text-left m-auto my-2 py-3 m-auto'>
-                   <a class='p-3 text-dark bg-light' href='http://localhost:8888/index.php?table=bie&action=form'>Etape suivante</a> 
+             <div class='text-left m-auto my-2  py-3 m-auto'>
+                   <a class='p-3  text-dark bg-light' href='http://localhost:8888/index.php?table=bie&action=form'>Etape suivante</a> 
              </div>"; 
         }
 
