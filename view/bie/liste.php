@@ -4,17 +4,19 @@
 ?>
   
   <h3 class="py-2 my-2 text-center ">LISTE BIE</h3>
+
   <p class="py-2 my-2 text-center text-success"><?= $message ?></p>
-   <table  class='table'>
+  
+   <table  id="table_id" class='table'>
           <thead>
             <tr>
-              <th class='text-center'>ID#</th>
+              <th class='text-center'>Détail</th>
               <th class='text-center'>CRITERE B</th>
               <th class='text-center'>Fin disp bie</th>
               <th class='text-center'>ACTION</th>
             </tr>
         </thead>
-        <body>
+        <tbody>
         <?php foreach($res as $value){ ?>
             <tr>
                   <td class='text-center'>
@@ -29,8 +31,7 @@
                 </td>
             </tr>
        <?php } ?>
-    </body></table>;
-
+    </tbody></table>
 <?php $container= ob_get_clean(); ?>
 
 

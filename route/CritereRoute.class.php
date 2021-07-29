@@ -24,7 +24,7 @@ class CritereRoute{
        $params="";
        foreach($_POST as $key =>$value){
               if($value==""){
-                    $erreur="Veuillez remplir les champse marque en rouge";
+                    $erreur="Les champs marque en rouge sont obligatoires";
                     $params.=$key."=".$value."&";
 
               }else{

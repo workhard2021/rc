@@ -3,7 +3,7 @@
  trait ModelTraitBie{
 
         function gets_bie(){
-          $requette="SELECT * FROM liste_bie ORDER BY id_bie DESC LIMIT 0,15";
+          $requette="SELECT * FROM liste_bie ORDER BY id_bie DESC";
           $req=$this->db->prepare($requette);
           $req->execute();
           return $req->fetchAll(PDO::FETCH_ASSOC);   

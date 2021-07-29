@@ -53,7 +53,7 @@
         $params="";
         foreach($array as $key =>$value){
                if($value==""){
-                     $erreur="veuillez remplir les champse marque en rouge";
+                     $erreur="Les champs marque en rouge sont obligatoires";
                      $params.=$key."=".$value."&";
                }else{
                    $params.=$key."=".$value."&";

@@ -53,7 +53,6 @@
 
            <nav class="py-3 mb-3 bg-info d-flex justify-content-evently">
                 <div class="col-md-3 col-12 col-md-12 text-center">
-
                     <a class="p-1 text-light item " href="http://localhost:8888/index.php?action=gets&table=bie">Accueil</a>
                     <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=critere">Ajouter bie</a> |
                     <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=client">Ajouter client</a>
@@ -67,7 +66,7 @@
            <div class="image">
                <img src="view/images/edm.png" alt="...">
            </div>
-           <div id="container"> 
+           <div id="container" class="col-11 m-auto"> 
              <?= $container ?>
            </div>
            <footer id="footer">
@@ -75,5 +74,13 @@
                      <p class="py-4  text-ligth text-center"> &copy 2021-Electricité de Mayotte-Toute reproduction interdite</p>
                 </div>
            </footer>
+           <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+           <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+           <script> 
+              $(document).ready(function(){
+               $('#table_id').DataTable();  
+              })
+           </script>
 </body>
 </html>
