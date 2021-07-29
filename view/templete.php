@@ -17,9 +17,11 @@
         }
         #container{
             position:relative;
-            top:50px;
+            top:20px;
         }
-
+        form{
+             margin-top:50px;
+        }
         ul{
              list-style-type:none;
         }

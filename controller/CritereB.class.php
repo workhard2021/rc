@@ -50,8 +50,10 @@ class CritereB{
             $nbr_client+=intval($value);
         }
     }
-    
-    $somme_nbr_clients=count($res);
+     
+    foreach($res as $key =>$value){
+        $somme_nbr_clients+=$value["nb_clients"];
+    }
     // calcul de critere b
     $critere_b=($nbr_client*$interval)/$somme_nbr_clients;
     $critere_b=round($critere_b,2);
