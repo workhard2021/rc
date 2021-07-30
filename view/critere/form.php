@@ -116,7 +116,7 @@ const Liste_postes=document.getElementById("Liste_postes");
 const departs=document.getElementById("departs");
 const clients=document.getElementById("clients");
 
-Liste_postes.addEventListener("click",getDepart);
+Liste_postes.addEventListener("change",getDepart);
 departs.addEventListener("change",getTransfo);
 
 async  function getDepart(e){
@@ -128,7 +128,6 @@ async  function getDepart(e){
                res=await get(url2);
                let depart="<option selected>Choisir</option>";
                for(let value of res){
-
                     depart+="<option  value='"+value["Lib_depart"]+ "'>"+value["Lib_depart"]+"</option>";    
                }
                departs.innerHTML=depart;  
@@ -150,6 +149,7 @@ async function  getTransfo(e){
                }
                clients.innerHTML=transf;
 }
+
 window.addEventListener("load",()=>{
         clients.innerHTML="";
 })

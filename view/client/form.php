@@ -10,7 +10,6 @@
     $message="<div class='text-center my-2 text-success'>".htmlspecialchars($_GET['message'])."</div>";
   }
   
-
 ?>
 
 <h3 class="text-center text-dark my-3">Ajouter un client</h3>
@@ -101,20 +100,20 @@
            <label class="pb-1" for="nb_clients">Nombre de client
            <?php if(empty($_GET["nb_clients"])){ echo "<span class='text-danger'>*</span>";}?>
            </label><br>
-           <input type="number" id="nb_clients" value="<?php if(isset($_GET['nb_clients'])){  echo $_GET['nb_clients'];}?>" name="nb_clients" placeholder="Nombre de client"/>
+           <input type="number" class="form-control" id="nb_clients" value="<?php if(isset($_GET['nb_clients'])){  echo $_GET['nb_clients'];}?>" name="nb_clients" placeholder="Nombre de client"/>
         </div>
 
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="Num_transf">Numero tranfo
            <?php if(empty($_GET["Num_transf"])){ echo "<span class='text-danger'>*</span>";}?>
            </label><br>
-           <input type="number" id="Num_transf" value="<?php if(isset($_GET['Num_transf'])){  echo $_GET['Num_transf'];}?>" name="Num_transf" placeholder="Numéro transfo"/>
+           <input type="number" class="form-control" id="Num_transf" value="<?php if(isset($_GET['Num_transf'])){  echo $_GET['Num_transf'];}?>" name="Num_transf" placeholder="Numéro transfo"/>
         </div>
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="Lib_transf">Libelle transfo
            <?php if(empty($_GET["Lib_transf"])){ echo "<span class='text-danger'>*</span>";}?>
            </label><br>
-           <input type="text" id="Lib_transf" value="<?php if(isset($_GET['Lib_transf'])){  echo $_GET['Lib_transf'];}?>" name="Lib_transf" placeholder="Libelle"/>
+           <input type="text" class="form-control" id="Lib_transf" value="<?php if(isset($_GET['Lib_transf'])){  echo $_GET['Lib_transf'];}?>" name="Lib_transf" placeholder="Libelle"/>
         </div>
 
     </div>
@@ -122,4 +121,56 @@
         <button class="btn btn-info col-4 d-block m-auto">Enregistrer</button>
    </div>
 </form>
+<script>
+
+async function get(url){
+
+let res= await fetch(url,{method:'get',headers:"application/json"});
+ if(res.status !=200) alert("une erreur");
+ return await res.json(); 
+
+}
+
+
+const Id_posSce=document.getElementById("Id_posSce");
+const Id_depart=document.getElementById("Id_depart");
+
+const Id_commune=document.getElementById("Id_commune");
+const Id_village=document.getElementById("Id_village");
+
+Id_posSce.addEventListener("change",getDepart);
+Id_commune.addEventListener("change",getVillage);
+
+
+async  function getDepart(e){
+
+           e.preventDefault();
+           const id=this.value;
+           url=`http://localhost:8888/e.php?table=depart_hta&colonne=Id_Psce&id=${id}`;
+           res=await get(url);
+           let depart="<option selected>Choisir</option>";
+           for(let value of res){
+                depart+="<option  value='"+value["Id_depart"]+ "'>"+value["Lib_depart"]+"</option>";    
+            }
+           Id_depart.innerHTML=depart;                                  
+}
+
+async  function getVillage(e){
+
+           e.preventDefault();
+           const id=this.value;
+           url=`http://localhost:8888/e.php?table=liste_village&colonne=Id_Commune&id=${id}`;
+           res=await get(url);
+           let options="<option selected>Choisir</option>";
+           for(let value of res){
+
+               if(value["Id_commune"]!=id){ 
+
+                    options+="<option  value='"+value["Id_village"]+ "'>"+value["lib_village"]+"</option>";    
+               }
+            }
+            Id_village.innerHTML=options;                               
+}
+
+</script>
 <?php $container = ob_get_clean() ?>

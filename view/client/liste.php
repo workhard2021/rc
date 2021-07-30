@@ -16,7 +16,7 @@
                     <a class='btn btn-secondary' href="index.php?table=client&action=modifier&colonne=Id_transf&id=<?=$value['Id_transf']?>">Modifier</a>
                   </td>
                   <td class='text-center'> 
-                   <a class='btn btn-secondary' href="index.php?action=delete&table=client&colonne=Id_transf&id=<?=$value['Id_transf']?>" onclick=" if(!confirm('confirmez la suppression')){return false}">Supprimer</a>
+                   <a class='btn btn-secondary' href="index.php?action=delete&table=client&colonne=Id_transf&id=<?=$value['Id_transf']?>"  onclick=" if(!confirm('confirmez la suppression')){return false}">Supprimer</a>
                   </td>
              </tr>
        <?php } ?>
