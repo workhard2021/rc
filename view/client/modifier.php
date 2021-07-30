@@ -19,7 +19,7 @@
   <?=$message ?>
 <form id="send" method="post" action="index.php?action=update&table=client&id=<?=$res['Id_transf']?>">
 
-     <div class="d-flex mb-3 align-items-flex-center justify-content-center col-11 m-auto  flex-wrap">
+     <div class="d-flex mb-3 align-items-flex-center justify-content-center col-11 m-auto flex-wrap">
         
         <div class="col-5 col-md-2 py-2 text-center m-auto">
             <label class="pb-1" for="Id_posSce">Poste source
@@ -93,16 +93,16 @@
         </div>
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="nb_clients">Nombre de client</label><br>
-           <input type="number" id="nb_clients" value="<?php echo $res['nb_clients'];?>" name="nb_clients" placeholder="Nombre de client"/>
+           <input type="number" class="form-control" id="nb_clients" value="<?php echo $res['nb_clients'];?>" name="nb_clients" placeholder="Nombre de client"/>
         </div>
 
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="Num_transf">Numero tranfo</label><br>
-           <input type="number" id="Num_transf" value="<?php echo $res['Num_transf'];?>" name="Num_transf" placeholder="Numéro transfo"/>
+           <input type="number" class="form-control" id="Num_transf" value="<?php echo $res['Num_transf'];?>" name="Num_transf" placeholder="Numéro transfo"/>
         </div>
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="Lib_transf">Libelle transfo</label><br>
-           <input type="text" id="Lib_transf" value="<?php  echo $res['Lib_transf'];?>" name="Lib_transf" placeholder="Libelle"/>
+           <input type="text" class="form-control" id="Lib_transf" value="<?php  echo $res['Lib_transf'];?>" name="Lib_transf" placeholder="Libéllé"/>
         </div>
     </div>
   <div class="my-3 p-5 col-11 m-auto">

@@ -82,6 +82,10 @@
                      <p class="py-4  text-ligth text-center"> &copy 2021-Electricité de Mayotte-Toute reproduction interdite</p>
                 </div>
            </footer>
+           <!-- Script en local -->
+           <script src="view/javscript/critere.js"></script>
+           <script src="view/javscript/client.js"></script>
+           <!-- script et css pour le plugin query-datable-->
            <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
