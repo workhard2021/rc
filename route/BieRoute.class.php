@@ -33,7 +33,6 @@ class BieRoute{
              exit();
         }
     }
-
     public  function get(Bie $bie){
 
         $id=isset($_GET['id'])? intval($_GET['id']):false;

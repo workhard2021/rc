@@ -12,7 +12,7 @@
             <tr>
               <th class='text-center'>Détail</th>
               <th class='text-center'>CRITERE B</th>
-              <th class='text-center'>Fin disp bie</th>
+              <th class='text-center'>NUMERO BIE</th>
               <th class='text-center'>ACTION</th>
             </tr>
         </thead>
@@ -25,7 +25,7 @@
                   <td class='text-center'>
                       <?=$value['CritereB']?>
                   </td>
-                  <td class='text-center'><?=$value['fin_indispot_bie']?></td>
+                  <td class='text-center'><?=$value['Num_bie']?></td>
                   <td class='text-center'> 
                    <a class='btn btn-secondary' href="index.php?action=delete&table=bie&id=<?=$value['id_bie']?>" onclick=" if(!confirm('confirmez la suppression')){return false}">supprimer</a>
                 </td>
