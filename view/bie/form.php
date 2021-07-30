@@ -1,4 +1,5 @@
 <?php $titre="Form bie"; 
+   $format_date="2016-01-05 00:20:23";
    $erreur=isset($_GET["erreur"])? htmlspecialchars($_GET["erreur"]):"";
 ob_start() ?>
 
@@ -7,8 +8,9 @@ ob_start() ?>
 <div class="p-3 m-3"><a href="http://localhost:8888/index.php?action=gets&table=critere">Retour</a></div>
 <form method="post" action="index.php?action=create&table=bie">
      <!-- autre  -->
-    <div class="d-flex mb-3 align-items-flex-start justify-content-evenly  col-11 m-auto">
-        <div class=" m-auto mt-0 col-2 py-2">
+    <div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
+
+        <div class="col-5 col-md-3 py-2  text-center m-auto">
              <label class="pb-1" for="Id_orig">Origine  
              <?php if(empty($_GET["Id_orig"])){ echo "<span class='text-danger'>*</span>";}?>
              </label><br>
@@ -22,7 +24,7 @@ ob_start() ?>
              </select>
         </div>
         
-        <div class=" m-auto mt-0 col-2 py-2">
+        <div class="col-5 col-md-3 py-2  text-center m-auto">
             <label class="pb-1" for="Lib_cause">Cause
             <?php if(empty($_GET["Id_cause"])){ echo "<span class='text-danger'>*</span>";}?>
             </label><br>
@@ -36,7 +38,7 @@ ob_start() ?>
              </select>
         </div>
 
-        <div class=" m-auto mt-0 col-2 py-2">
+        <div class="col-5 col-md-3 py-2  text-center m-auto">
             <label class="pb-1" for="Lib_nature">Nature
              <?php if(empty($_GET["id_nature"])){ echo "<span class='text-danger'>*</span>";}?>
             </label><br>
@@ -49,7 +51,7 @@ ob_start() ?>
                    <?php }?>
              </select>
         </div>
-        <div class=" m-auto mt-0 col-2 py-2">
+        <div class="col-5 col-md-3 py-2  text-center m-auto">
             <label class="pb-1" for="id_typedf"> Defaut
             <?php if(empty($_GET["id_typedf"])){ echo "<span class='text-danger'>*</span>";}?>
             </label><br>
@@ -65,8 +67,8 @@ ob_start() ?>
     </div> 
 
     <!-- autre -->
-    <div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
-      <div class=" m-auto mt-0 col-2 py-2">
+    <div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
+      <div class="col-5 col-md-3 py-2  text-center m-auto">
           <label class="pb-1" for="Id_Siege">Siege
           <?php if(empty($_GET["Id_Siege"])){ echo "<span class='text-danger'>*</span>";}?>
           </label><br>
@@ -79,7 +81,7 @@ ob_start() ?>
                  <?php }?>
            </select>
       </div>     
-      <div class=" m-auto mt-0 col-2 py-2">
+      <div class="col-5 col-md-3 py-2  text-center m-auto">
           <label class="pb-1" for="Id_typeJ">Type H
           <?php if(empty($_GET["Id_typeh"])){ echo "<span class='text-danger'>*</span>";}?>
           </label><br>
@@ -93,7 +95,7 @@ ob_start() ?>
                <?php }?>
            </select>
       </div>
-      <div class=" m-auto mt-0 col-2 py-2">
+      <div class="col-5 col-md-3 py-2  text-center m-auto">
           <label class="pb-1" for="Id_typej">Type J
           <?php if(empty($_GET["Id_typej"])){ echo "<span class='text-danger'>*</span>";}?>
           </label><br>
@@ -109,92 +111,92 @@ ob_start() ?>
    </div> 
 
   <!-- autre  date -->
-  <div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
-    <div class=" m-auto mt-0 col-2 py-2">
+  <div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="hpec_bie">Hpec bie 
         <?php if(empty($_GET["hpec_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['hpec_bie'])){  echo $_GET['hpec_bie'];}?>"  type="datetime-local" id="hpec_bie" name="hpec_bie" placeholder="Hpec bie"/>
+        <input value="<?php if(isset($_GET['hpec_bie'])){  echo $_GET['hpec_bie'];}?>"  type="datetime-local" id="hpec_bie" name="hpec_bie" placeholder="<?=$format_date ?>"/>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="hdebut_bie">Hdebut bie
         <?php if(empty($_GET["hdebut_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['hdebut_bie'])){  echo $_GET['hdebut_bie'];}?>" type="datetime-local" id="hdebut_bie" name="hdebut_bie" placeholder="Hdebut bie"/>
+        <input value="<?php if(isset($_GET['hdebut_bie'])){  echo $_GET['hdebut_bie'];}?>" type="datetime-local" id="hdebut_bie" name="hdebut_bie" placeholder="<?=$format_date ?>"/>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="mderomt_bie">Mderomt bie 
         <?php if(empty($_GET["mderomt_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['mderomt_bie'])){  echo $_GET['mderomt_bie'];}?>"  type="datetime-local" id="mderomt_bie" name="mderomt_bie" placeholder="M deromt bie"/>
+        <input value="<?php if(isset($_GET['mderomt_bie'])){  echo $_GET['mderomt_bie'];}?>"  type="datetime-local" id="mderomt_bie" name="mderomt_bie" placeholder="<?=$format_date ?>"/>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="manloc_bie">Manloc bie 
         <?php if(empty($_GET["manloc_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['manloc_bie'])){  echo $_GET['manloc_bie'];}?>"  type="datetime-local" id="manloc_bie" name="manloc_bie" placeholder="Manloc bie"/>
+        <input value="<?php if(isset($_GET['manloc_bie'])){  echo $_GET['manloc_bie'];}?>"  type="datetime-local" id="manloc_bie" name="manloc_bie" placeholder="<?=$format_date ?>"/>
     </div>
 </div> 
  <!-- date date -->
-<div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
+<div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
 
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="findc_bie">Locdef bie 
          <?php if(empty($_GET["locdef_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['locdef_bie'])){  echo $_GET['locdef_bie'];}?>" type="datetime-local" id="locdef_bie" name="locdef_bie" placeholder="Locdef bie"/>
+        <input value="<?php if(isset($_GET['locdef_bie'])){  echo $_GET['locdef_bie'];}?>" type="datetime-local" id="locdef_bie" name="locdef_bie" placeholder="<?=$format_date ?>"/>
     </div>
 
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="findc_bie">Findc bie 
         <?php if(empty($_GET["findc_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['findc_bie'])){  echo $_GET['findc_bie'];}?>" type="datetime-local" id="findc_bie" name="findc_bie" placeholder="Findc bie"/>
+        <input value="<?php if(isset($_GET['findc_bie'])){  echo $_GET['findc_bie'];}?>" type="datetime-local" id="findc_bie" name="findc_bie" placeholder="<?=$format_date ?>"/>
     </div>
 
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="fin_indispod_bie">Fin indispod bie 
         <?php if(empty($_GET["fin_indispod_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['fin_indispod_bie'])){  echo $_GET['fin_indispod_bie'];}?>" type="datetime-local" id="fin_indispod_bie" name="fin_indispod_bie" placeholder="Find indispod bie"/>
+        <input value="<?php if(isset($_GET['fin_indispod_bie'])){  echo $_GET['fin_indispod_bie'];}?>" type="datetime-local" id="fin_indispod_bie" name="fin_indispod_bie" placeholder="<?=$format_date ?>"/>
     </div>
 
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="fin_indispot_bie">Fin d'insdispot bie 
         <?php if(empty($_GET["fin_indispot_bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input value="<?php if(isset($_GET['fin_indispot_bie'])){  echo $_GET['fin_indispot_bie'];}?>"  type="datetime-local" id="fin_indispot_bie" name="fin_indispot_bie" placeholder="Find indispot bie"/>
+        <input value="<?php if(isset($_GET['fin_indispot_bie'])){  echo $_GET['fin_indispot_bie'];}?>"  type="datetime-local" id="fin_indispot_bie" name="fin_indispot_bie" placeholder="<?=$format_date ?>"/>
     </div>
 
 </div>
       <!-- autre date  -->
-<div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
+<div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
     
-       <div class=" m-auto mt-0 col-2 py-2">
+       <div class="col-5 col-md-3 py-2  text-center m-auto">
           <label class="pb-1" for="premappelcex_bie">Prémier appel cex
             <?php if(empty($_GET["premappelcex_bie"])){ echo "<span class='text-danger'>*</span>";}?>
          </label><br>
-          <input value="<?php if(isset($_GET['premappelcex_bie'])){  echo $_GET['premappelcex_bie'];}?>" type="datetime-local" id="premappelcex_bie" name="premappelcex_bie" placeholder="Premier appel cex"/>
+          <input value="<?php if(isset($_GET['premappelcex_bie'])){  echo $_GET['premappelcex_bie'];}?>" type="datetime-local" id="premappelcex_bie" name="premappelcex_bie" placeholder="<?=$format_date ?>"/>
        </div>
 
-      <div class=" m-auto mt-0 col-2 py-2">
+      <div class="col-5 col-md-3 py-2  text-center m-auto">
           <label class="pb-1" for="premctactcex_bie">Prémier contact cex 
           <?php if(empty($_GET["premctactcex_bie"])){ echo "<span class='text-danger'>*</span>";}?>
           </label><br>
-          <input value="<?php if(isset($_GET['premctactcex_bie'])){  echo $_GET['premctactcex_bie'];}?>" type="datetime-local" id="premctactcex_bie" name="premctactcex_bie" placeholder="Premier contact cex"/>
+          <input value="<?php if(isset($_GET['premctactcex_bie'])){  echo $_GET['premctactcex_bie'];}?>" type="datetime-local" id="premctactcex_bie" name="premctactcex_bie" placeholder="<?=$format_date ?>"/>
        </div>
-       <div class=" m-auto mt-0 col-2 py-2">
+       <div class="col-5 col-md-3 py-2  text-center m-auto">
            <label class="pb-1" for="nbrenvoi_defaut">Nbrenvoi defaut
            <?php if(empty($_GET["nbrenvoi_defaut"])){ echo "<span class='text-danger'>*</span>";}?>
            </label><br>
-           <input value="<?php if(isset($_GET['nbrenvoi_defaut'])){  echo $_GET['nbrenvoi_defaut'];}?>" type="number" id="nbrenvoi_defaut" name="nbrenvoi_defaut" />
+           <input value="<?php if(isset($_GET['nbrenvoi_defaut'])){  echo $_GET['nbrenvoi_defaut'];}?>" type="number" id="nbrenvoi_defaut" name="nbrenvoi_defaut" placeholder="Nombre de renvoi" />
       </div>
 </div>
 
 <!-- autre omt  -->
-<div class="d-flex mb-3 align-items-flex-start justify-content-evenly   col-11 m-auto">
+<div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
 
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="nb_omt_man">Nb omt man
         <?php if(empty($_GET["nb_omt_man"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
@@ -208,7 +210,7 @@ ob_start() ?>
          <?php }?>
        </select>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="nb_omt_def">Nb omt def
         <?php if(empty($_GET["nb_omt_def"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
@@ -222,7 +224,7 @@ ob_start() ?>
        </select>
     </div>
 
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
        <label class="pb-1" for="nb_ild_visu">Nb ild visu
        <?php if(empty($_GET["nb_ild_visu"])){ echo "<span class='text-danger'>*</span>";}?>
        </label><br>
@@ -235,7 +237,7 @@ ob_start() ?>
            <?php }?>
        </select>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
        <label class="pb-1" for="nb_ild_def">Nb ild def
        <?php if(empty($_GET["nb_ild_def"])){ echo "<span class='text-danger'>*</span>";}?>
        </label><br>
@@ -252,35 +254,35 @@ ob_start() ?>
 </div>
 
 <!--Nb illd visu  -->
-<div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
+<div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
     
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="dsp1">Dispatch 1
         <?php if(empty($_GET["dsp1"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
         <input type="text" id="dsp1" value="<?php if(isset($_GET['dsp1'])){  echo $_GET['dsp1'];}?>" name="dsp1" placeholder="Dispatcher 1"/>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="dsp2">Dispatch 2
         <?php if(empty($_GET["dsp2"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
         <input type="text" id="dsp2" value="<?php if(isset($_GET['dsp2'])){  echo $_GET['dsp2'];}?>" name="dsp2" placeholder="Dispatcher 2"/>
     </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="Id_resp">Id_resp
         <?php if(empty($_GET["Id_resp"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
         <input type="datetime-local" value="<?php if(isset($_GET['Id_resp'])){  echo $_GET['Id_resp'];}?>" id="Id_resp" name="Id_resp" placeholder="Id_resp"/>
      </div>
-    <div class=" m-auto mt-0 col-2 py-2">
+    <div class="col-5 col-md-3 py-2  text-center m-auto">
         <label class="pb-1" for="Heure_Bie">Heure bie
         <?php if(empty($_GET["Heure_Bie"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <input type="datetime-local" value="<?php if(isset($_GET['Heure_Bie'])){  echo $_GET['Heure_Bie'];}?>" id="Heure_Bie" name="Heure_Bie" placeholder="Heure bie"/>
+        <input type="datetime-local" value="<?php if(isset($_GET['Heure_Bie'])){  echo $_GET['Heure_Bie'];}?>" id="Heure_Bie" name="Heure_Bie" placeholder="<?=$format_date ?>"/>
      </div>    
 </div>
-<div class="d-flex mb-3 align-items-flex-start justify-content-center col-11 m-auto">
-       <div class=" m-auto mt-0 col-8 py-2">
+<div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
+       <div class=" m-auto mt-0 col-11 py-2">
          <label class="pb-1" for="Lieu_def_rex">Lieu def rex
              <?php if(empty($_GET["Lieu_def_rex"])){ echo "<span class='text-danger'>*</span>";}?>
          </label><br>

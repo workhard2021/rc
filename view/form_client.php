@@ -62,7 +62,4 @@
          <button class="btn btn-info col-4 d-block m-auto">Enregister client</button>
     </div>
 </form>
-
-
-
 <?php $container=ob_get_clean() ?>

@@ -13,7 +13,7 @@
           font-family:sans-serif;
        }
         #clients{
-             height:70px;
+             height:80px;
              overflow-y:scroll;
         }
         #header{

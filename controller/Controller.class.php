@@ -1,8 +1,5 @@
 <?php 
 require_once 'model/Model.class.php';
-require_once('model/Bie.class.php');
-require_once('CritereB.class.php');
-
 class Controller{
     
     private $model;
@@ -10,29 +7,24 @@ class Controller{
         $this->model=new Model();
     }
     public function gets($table){
-         $res=$this->model->gets($table); 
-         return $res;
+         return $this->model->gets($table); 
     } 
 
     public function delete($table,$colonne,$id){
-        $res=$this->model->delete($table,$colonne,$id);  
-        return $res;
+
+        return $this->model->delete($table,$colonne,$id);  
+        
     }
     public function create($table,$array){
-        
-           $res=$this->model->create($table,$array);
-           return $res;
+        return $res=$this->model->create($table,$array);   
     }
     public function update($table,$array,$colonne,$id){
-        $res=$this->model->update($table,$array,$colonne,$id); 
-        return $res;
+         return $this->model->update($table,$array,$colonne,$id); 
     }
     public function get($table,$colonne,$id){
-          return $this->model->get($table,$colonne,$id);
+    
+          $res=$this->model->get($table,$colonne,$id);
+          echo json_encode($res);
     }
-    public function getsApi($table){
-        $res=$this->model->gets($table); 
-        return $res;
-   }
     
 }
