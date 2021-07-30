@@ -53,7 +53,7 @@
         $params="";
         foreach($array as $key =>$value){
                if($value==""){
-                     $erreur="Les champs marque en rouge sont obligatoires";
+                     $erreur="Les champs marqués en rouge sont obligatoires";
                      $params.=$key."=".$value."&";
                }else{
                    $params.=$key."=".$value."&";
@@ -72,19 +72,28 @@
 
         $id=isset($_GET['id'])? intval($_GET['id']):false;
         $array=$_POST;
+        $erreur="";
+        $params="";
+
         foreach($array as $key =>$value){
                if($value==""){
-                    unset($array[$key]);
+                     $erreur="Les champs marqués en rouge sont obligatoires";
+                     $params.=$key."=".$value."&";
+               }else{
+                   $params.=$key."=".$value."&";
                }
         }
-        if(count($array)==0){
 
-             throw new Exception("REMPLIR TOUT LES CHAMPS UPDATE");
+        if($erreur!="" || count($array)==0){ 
+              $erreur="";
+              header("location:http://localhost:8888/index.php?table=client&action=modifier&erreur=$erreur&$params&id=$id");
+               exit();
+        }
 
-        }elseif(!$id){
-
+        if(!$id){
              throw new Exception("UNE ERREUR DANS LA ROUTE UPDATE ID EXISTE PAS");
         }
+
         $clientController->update($array,$id);
         
     }
@@ -104,8 +113,4 @@
         $clientController->form();    
     }
   
-    
-
-   
-
 }

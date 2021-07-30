@@ -20,28 +20,27 @@ async  function getDepart(e){
                let res=await get(url);
                url2=`http://localhost:8888/e.php?table=depart_hta&colonne=Id_Psce&id=${res[0].Id}`;
                res=await get(url2);
-               let depart="<option selected>Choisir</option>";
+               let options="<option value='' selected>Choisir</option>";
                for(let value of res){
-                    depart+="<option  value='"+value["Lib_depart"]+ "'>"+value["Lib_depart"]+"</option>";    
+                    options+="<option  value='"+value["Lib_depart"]+ "'>"+value["Lib_depart"]+"</option>";    
                }
-               departs.innerHTML=depart;  
+               departs.innerHTML=options;  
                clients.innerHTML="";                                 
 }
 
 async function  getTransfo(e){
                e.preventDefault();
                const id=this.value;
-               let transf="";
+               let input="";
                url=`http://localhost:8888/e.php?table=depart_hta&colonne=Lib_depart&id=${id}`;
                let res=await get(url);
                url2=`http://localhost:8888/e.php?table=clients&colonne=Id_depart&id=${res[0].Id_depart}`;
                res=await get(url2);
                for(let value of res){
-                    
                     transf+="<label for='"+value["Id_transf"]+"'>"+value["Lib_transf"]+"</label>"+
                      "<input id='"+ value["Id_transf"]+ "' name='"+value["Lib_transf"]+"' type='checkbox' value='"+value["nb_clients"]+"'/><br>";
                }
-               clients.innerHTML=transf;
+               clients.innerHTML=input;
 }
 
 window.addEventListener("load",()=>{

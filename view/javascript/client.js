@@ -23,11 +23,11 @@ async function get(url){
                const id=this.value;
                url=`http://localhost:8888/e.php?table=depart_hta&colonne=Id_Psce&id=${id}`;
                res=await get(url);
-               let depart="<option selected>Choisir</option>";
+               let options="<option value='' selected>Choisir</option>";
                for(let value of res){
-                    depart+="<option  value='"+value["Id_depart"]+ "'>"+value["Lib_depart"]+"</option>";    
+                    options+="<option  value='"+value["Id_depart"]+ "'>"+value["Lib_depart"]+"</option>";    
                 }
-               Id_depart.innerHTML=depart;                                  
+               Id_depart.innerHTML=options;                                  
     }
     
     async  function getVillage(e){
@@ -35,7 +35,7 @@ async function get(url){
                const id=this.value;
                url=`http://localhost:8888/e.php?table=liste_village&colonne=Id_Commune&id=${id}`;
                res=await get(url);
-               let options="<option selected>Choisir</option>";
+               let options="<option value='' selected>Choisir</option>";
                for(let value of res){
     
                    if(value["Id_commune"]!=id){ 

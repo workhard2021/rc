@@ -56,7 +56,7 @@ class BieRoute{
              $params="";
              foreach($array as $key =>$value){
                     if($value==""){
-                          $erreur="Les champs marque en rouge sont obligatoires";
+                          $erreur="Les champs marqués en rouge sont obligatoires";
                           $params.=$key."=".$value."&";
 
                     }else{
