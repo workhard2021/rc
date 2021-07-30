@@ -31,7 +31,8 @@
                 </td>
             </tr>
        <?php } ?>
-    </tbody></table>
+    </tbody>
+   </table>
 <?php $container= ob_get_clean(); ?>
 
 

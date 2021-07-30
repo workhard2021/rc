@@ -84,7 +84,7 @@
                 </div>
            </footer>
           <!-- Script en local -->
-          <script src="view/javascript/critere_.js"></script>
+          <script src="view/javascript/bie.js"></script>
           <script src="view/javascript/client.js"></script>
            <!-- script et css pour le plugin query-datable-->
            <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
@@ -92,8 +92,9 @@
            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
            <script> 
               $(document).ready(function(){
-               $('#table_id').DataTable();  
+                $('#table_id').DataTable();  
               })
+              
            </script>
 </body>
 </html>

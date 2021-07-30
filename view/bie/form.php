@@ -37,7 +37,7 @@ ob_start() ?>
                    <?php }?>
              </select>
         </div>
-
+     
         <div class="col-5 col-md-3 py-2  text-center m-auto">
             <label class="pb-1" for="Lib_nature">Nature
              <?php if(empty($_GET["id_nature"])){ echo "<span class='text-danger'>*</span>";}?>
@@ -53,7 +53,7 @@ ob_start() ?>
         </div>
         <div class="col-5 col-md-3 py-2  text-center m-auto">
             <label class="pb-1" for="id_typedf"> Defaut
-            <?php if(empty($_GET["id_typedf"])){ echo "<span class='text-danger'>*</span>";}?>
+            <?php if(empty($_GET["Id_typedef"])){ echo "<span class='text-danger'>*</span>";}?>
             </label><br>
              <select id="Id_typedef" name="Id_typedef" class="form-select">
                   <option value="" >Choisir</option>
