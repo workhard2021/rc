@@ -29,14 +29,18 @@ class Bie{
       }
 
       public function create($array){
-
-           $array['Num_bie']="BIE-". date("d-m-y");
+           $num_bie=$this->model->gets_bie();
+           $explo=explode("-",$num_bie[0]["Num_bie"]);
+           $k=0;
+           if(count($explo)>3){
+               $k=intval($explo[4])+1;
+            }
+           $array['Num_bie']="BIE-". date("d-m-y")."-0".$k;
            $array["Date_Bie"]=$array["Heure_Bie"];
-    
-          $array_session=[];
-          foreach($_SESSION["session_critere_b"] as $value){
+           $array_session=[];
+           foreach($_SESSION["session_critere_b"] as $value){
                  $array_session[]=$value;
-          }
+           }
          
          
           $poste=$array_session[0]["Liste_postes"];
@@ -51,7 +55,7 @@ class Bie{
           }
 
           $array["CritereB"]=$critere_b_total;
-           var_dump($array);
+           
           $res=$this->model->create("liste_bie",$array);
           $res=$this->model->gets_bie();
           $id=$res[0]['id_bie'];
@@ -64,7 +68,7 @@ class Bie{
                 $liste_realim["mode_realim"]=$value["mode_realim"];
                 $liste_realim["nbcli_poste"]=$value["nbcli_poste"];
                 $liste_realim["critere_B"]=$value["critere_B"];
-               $res=$this->model->create("liste_realimentation",$liste_realim);
+                $res=$this->model->create("liste_realimentation",$liste_realim);
           }
           unset($_SESSION["session_critere_b"]);
           header("location:http://localhost:8888/index.php?action=get&table=bie&id=".$id);
