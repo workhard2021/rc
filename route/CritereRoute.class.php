@@ -32,6 +32,14 @@ class CritereRoute{
               }
               $array[$key]=htmlspecialchars($value);
         }
+        if(count($array)<6){
+            if($erreur){
+                $erreur.=" et sélectionner les tranformateurs";
+            }else{
+                $erreur ="Sélectionner les tranformateurs";
+            }
+            
+        }
        
         if($erreur!=""){ 
              header("location:http://localhost:8888/index.php?action=form&table=critere&erreur=".$erreur."&".$params);

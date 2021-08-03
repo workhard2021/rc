@@ -30,7 +30,7 @@
             <?php if(empty($_GET["Liste_postes"])){ echo "<span class='text-danger'>*</span>";}?>
             </label><br>
              <select id="Liste_postes"   name="Liste_postes"  class="form-select">  
-                  <option value="" selected>Chosir</option>  
+                  <option value="" selected>Choisir</option>  
                    <?php  foreach($pos_sce as $value){  
                         $valid=($value['libelle_poste']==$_GET['Liste_postes'])? "selected":"";
                        ?>
@@ -43,7 +43,7 @@
             <?php if(empty($_GET["departs"])){ echo "<span class='text-danger'>*</span>";}?>
             </label><br>
              <select id="departs" name="departs" class="form-select"> 
-                   <option value="" selected>Chosir</option>  
+                   <option value="" selected>Choisir</option>  
                    <?php  foreach($pos_sce as $val){ ?>
                     <optgroup label="<?= $val["libelle_poste"] ?>">
                     <?php  foreach($depart_hta as $value){
@@ -55,24 +55,25 @@
                      </optgroup> 
                     <?php } ?> 
               </select>
-        </div>
+         </div>
+         <div class="col-5 col-md-3 py-2  text-center m-auto">
 
-        <div class="col-5 col-md-3 py-2  text-center m-auto">
-            <label class="pb-1" for="clients">Transformateur</label><br>
-             <div  id="clients" class="form-select" >
+               <label class="pb-1" for="clients">Transformateur</label><br>
+               
+               <div  id="clients" class="form-select" >
                    <?php  foreach($depart_hta as $val){ ?>
                     <div> <span class="text-info"><?= $val["Lib_depart"]?></span><br>
                     <?php  foreach($clients as $value){ 
                                 if($value["Id_depart"]==$val["Id_depart"]){ ?>
                                     <label for="<?= $value["Id_transf"]?>"><?= $value["Lib_transf"]?></label>
-                                    <input   name="<?= $value["Lib_transf"] ?>" type="checkbox" value="<?= $value["nb_clients"]?>"/><br>
+                                    <input id="<?= $value["Id_transf"]?>"   name="<?= $value["Lib_transf"] ?>" type="checkbox" value="<?= $value["nb_clients"]?>"/><br>
                                 <?php } ?>
                      <?php }?> 
                    </div> 
                     <?php } ?> 
-            </div>
-       </div>
-
+               </div>
+         </div>
+         
     </div> 
     <!-- autre -->
     <div class="d-flex mb-3 align-items-flex-center justify-content-center col-12 m-auto flex-wrap">

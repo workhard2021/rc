@@ -10,8 +10,11 @@ const Liste_postes=document.getElementById("Liste_postes");
 const departs=document.getElementById("departs");
 const clients=document.getElementById("clients");
 
+
 Liste_postes.addEventListener("change",getDepart);
 departs.addEventListener("change",getTransfo);
+
+
 
 async  function getDepart(e){
                e.preventDefault();
@@ -28,6 +31,21 @@ async  function getDepart(e){
                clients.innerHTML="";                                 
 }
 
+function seletionTout(val){
+       const checkbox=document.querySelectorAll(".checkbox");
+
+       if(val.checked){
+          console.log(val.checked); 
+          checkbox.forEach(element => {
+                element.checked=val.checked;
+          });
+        }else{
+            checkbox.forEach(element => {
+                  element.checked=val.checked;
+            });
+        }
+}
+
 async function  getTransfo(e){
                e.preventDefault();
                const id=this.value;
@@ -36,9 +54,12 @@ async function  getTransfo(e){
                let res=await get(url);
                url2=`http://localhost:8888/e.php?table=clients&colonne=Id_depart&id=${res[0].Id_depart}`;
                res=await get(url2);
+               if(res.length>0){ 
+                  input="<label for='tout'>Selectionez tout </label><input onClick='seletionTout(this)' id='tout' type='checkbox' /><br>";
+               }
                for(let value of res){
                     input+="<label for='"+value["Id_transf"]+"'>"+value["Lib_transf"]+"</label>"+
-                     "<input id='"+ value["Id_transf"]+ "' name='"+value["Lib_transf"]+"' type='checkbox' value='"+value["nb_clients"]+"'/><br>";
+                     "<input id='"+ value["Id_transf"]+ "' class='checkbox' name='"+value["Lib_transf"]+"' type='checkbox' value='"+value["nb_clients"]+"'/><br>";
                }
                clients.innerHTML=input;
 }
