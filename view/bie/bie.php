@@ -72,7 +72,7 @@
      </style>
     <div class="m-3 col-md-2 col-4 bg-light my-2 p-1 link">
          <a href="http://localhost:8888/index.php?t=1&action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a><br>
-         <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Apercy</a>
+         <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Apercu</a>
     </div>
    <?php $somme_client=0;
    $somme_critere_b=0; 

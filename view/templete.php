@@ -15,6 +15,11 @@
              height:80px;
              overflow-y:scroll;
         }
+        #clients label,#clients input{
+             padding:3px;
+             display:inline-block;
+             cursor: pointer;
+        }
         #header{
              position:relative;
         }
