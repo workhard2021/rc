@@ -38,10 +38,8 @@ async function get(url){
                let options="<option value='' selected>Choisir</option>";
                for(let value of res){
     
-                   if(value["Id_commune"]!=id){ 
-    
                         options+="<option  value='"+value["Id_village"]+ "'>"+value["lib_village"]+"</option>";    
-                   }
+
                 }
                 Id_village.innerHTML=options;                               
     }
