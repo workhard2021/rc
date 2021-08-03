@@ -1,18 +1,19 @@
-<?php 
+<?php
+require_once("vendor/Autoload.php");
+require_once("model/Model.class.php");
+// require_once "view/bie/pdf.php";
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 function pdf($res,$res2){
-  $html="
-  <!DOCTYPE html>
-   <html lang='en'>
-   <head>
-     <meta charset='UTF-8'>
-     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' crossorigin='anonymous'>
-      <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'  crossorigin='anonymous'></script> 
-     <title>Document</title>
-    
-  </head>
-  <body>";
+     
+  $html="<link href='view/css/css/bootstrap.css'>
+  
+  <style>
+    *{
+  
+  }</style>";
+
   $somme_client=0;
   $somme_critere_b=0; 
   foreach($res2 as $value){ 
@@ -91,7 +92,9 @@ $html.="<h2 class='text-center text-info'>Information de critère B</h2>
                <span>Lieu de defaut et Rex:</span>  
                <p>".$res['Lieu_def_rex']."</p>
      </div>
+
   </div>
+
 
 <div class='col-11 m-auto'>
 <table class='table text-light'>
@@ -138,8 +141,32 @@ $html.="<tr class='text-center'>
               <td><span class='px-2 bg-danger text-dark m-2'><b>".$somme_critere_b ."</b></span></td>
       <tr>
     </tbody></table>
-    </div>     
-    </body>
-    </html>";
-    return $html ;
+    </div>";
+    return $html;
+
 }
+
+
+$model=new model();
+$id=340;
+$res=$model->get_bie($id);
+$res2=$model->get("liste_realimentation","id_bie",$id);
+$html=pdf($res,$res2);
+
+function a($html){
+    
+    $option=new Options();
+    $option->set("defautlFont","courier");
+    $option->set('isHtml5ParserEnabled', true);
+    $dompdf=new Dompdf($option);
+    $dompdf->setBasePath("view/css/");
+    $dompdf->loadHtml($html,"utf-8");
+    $dompdf->setPaper("A4","portrait");
+    $dompdf->render();
+    $ficher="doc-".date("d-m-Y");
+    $dompdf->stream($ficher);
+}
+echo $html;
+//a($html);
+
+       

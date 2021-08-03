@@ -99,11 +99,13 @@ class Bie{
     }
 
     public function pdf($id){
+          
         $res=$this->model->get_bie($id);
         $res2=$this->model->get("liste_realimentation","id_bie",$id);
         $html=pdf($res,$res2);
         $option=new Options();
         $option->set("defautlFont","courier");
+        $option->set('isHtml5ParserEnabled', true);
         $dompdf=new Dompdf($option);
         $dompdf->loadHtml($html);
         $dompdf->setPaper("A4","portrait");
@@ -111,5 +113,6 @@ class Bie{
         $ficher="doc-".date("d-m-Y");
         $dompdf->stream($ficher);
         exit();
+        
      }
 }
