@@ -1,128 +1,217 @@
-<?php ob_start(); $titre="Détail"; 
- $somme_client=0;
-  $somme_critere_b=0; 
+<?php $titre="Détail bie"; ob_start();?>
+     <style>
+          
+            *{
+                 font-family:sans-serif;
+            }
+           .titre{
+                 position:relative;
+                 text-align:center;
+                 width:100%;
+            }
+            .critere span{
+                 color:red;
+            }
+            .titre:nth-child(1){
+               color:rgb(137, 207, 240);
+            }
+             img{
+                 width:120px;
+             }
+            #rapport td{
+                text-align:left;
+                padding-left:3px;
+                background-color:whitesmoke;
+                position: relative;
+                width:50%;
+                padding:3px;
+                background-color:white;
+                z-index:9;
+            }
+     
+            #rapport .mx{
+                 font-weight:bold;
+                 line-height:1.5em;
+            }
+           table{
+                width:90%;
+                position:relative;
+                margin:auto;
+           }
+           table,tr,td,th{
+                border:1px solid black;
+                border-collapse:collapse;
+                text-align:center;
+                font-size:1em;  
+           }
+           table th{
+                background-color:rgb(137, 207, 240);
+                padding:4px auto;
+                font-size:1.1em;
+           }
+           #detail{
+                 margin:20px auto;
+           }
+           #detail tr:nth-child(even) {
+                background:#B0C4DE;
+               }
+           #detail tr:nth-child(odd) {
+                background: #FFF
+            }
+           table .total td{
+                background-color:rgba(0,0,0,0.5);
+                color:white;
+           }
+           #info_bie,#info_bie tr,#info_bie td{
+                 border:1px solid white;
+           }
+           .link a:hover{
+                color:red;
+           }
+           
+     </style>
+    <div class="m-3 col-md-2 col-4 bg-light my-2 p-1 link">
+         <a href="http://localhost:8888/index.php?t=1&action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a><br>
+         <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Apercy</a>
+    </div>
+   <?php $somme_client=0;
+   $somme_critere_b=0; 
    foreach($res2 as $value){ 
-     $somme_client+=$value["nbcli_poste"];
-     $somme_critere_b+=$value["critere_B"];
-   }
- ?> 
-<h2 class="text-center text-info mt-3">Rapport critère B</h2>
+      $somme_client+=$value["nbcli_poste"];
+      $somme_critere_b+=$value["critere_B"];
+    } ?>
+     
+    <h2 class="titre">Certificat de critère B</h2>
+    <h3 class="titre critere"> CRITERE B <span><?=$res["CritereB"]?></span></h3>
+  <table id="info_bie">
+     <tbody> 
+       <tr>
+         <td><img class="item-logo" src="http://localhost:8888/view/images/edm.png" alt="..."/></td>
+         <td> <b>N° </b><?=$res["Num_bie"]?></td>
+         <td><b>Date: </b><?=$res["Heure_Bie"]?></td>
+       <tr>
+   </tbody>
+ </table>
 
-   <div class="m-3 col-md-2 col-4 bg-light my-2 p-1">
-         <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a>
-    </div>
+   <table id="rapport">
+      
+      <tbody>
+         <tr>
 
-   <h3 class="w-100 text-center"> CRITERE B <span class="text-danger"> <?=$res["CritereB"]?></span></h3>
-   
-   <div class="d-flex flex-wrap align-items-flex-start col-12 m-auto justify-content-evently">
+          <td>
+            <span class="mx">Origine:</span>  
+            <span><?=$res["Lib_Origine"]?></span><br/>
+            <span class="mx">Nature:</span> 
+            <span><?=$res["Lib_nature"]?></span><br/>
+            <span class="mx">Cause:</span> 
+            <span><?=$res["Lib_cause"]?></span><br/>
+            <span class="mx">Type defaut:</span>  
+            <span><?=$res["Lib_type"]?></span><br/>
+          </td>
+          <td>
+            <span class="mx">Siege:</span>  
+            <span><?=$res["Lib_siege"]?></span><br/>
+            <span class="mx">Post source:</span>  
+            <span><?=$res["libelle_poste"]?></span><br/>
+            <span class="mx">Depart:</span>  
+            <span><?=$res["Lib_depart"]?></span><br/>
+            <span class="mx">Nombre clients:</span>  
+            <span><?= $somme_client?></span><br/>
+         </td>
+     </tr>
+     <tr>
 
-     <div class="d-flex flex-wrap align-items-flex-start col-12 m-auto justify-content-evently "> 
-         <img  class="col-1 m-auto p-1" src="view/images/edm.png" alt="..."/>   
-         <span class="m-auto p-1"><b>N° </b><?=$res["Num_bie"]?></span><br>
-         <span class="m-auto p-1"><b>Date:</b> <?=$res["Heure_Bie"]?></span>
-     </div> 
-     <div class="m-auto col-11 col-md-5 bg-light my-2 p-1">
-            <span class="my-2">Origine:</span>  
-            <span class="mx-2"> <?=$res["Lib_Origine"]?></span><br>
-            <span class="my-2">Nature:</span> 
-            <span class="mx-2"> <?=$res["Lib_nature"]?></span><br>
-            <span class="my-2">Cause:</span> 
-            <span class="mx-2"> <?=$res["Lib_cause"]?></span><br>
-            <span class="my-2">Type defaut:</span>  
-            <span class="mx-2"> <?=$res["Lib_type"]?></span><br>
-      </div>
-      <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
-            <span class="my-2">Siege:</span>  
-            <span class="mx-2"> <?=$res["Lib_siege"]?></span><br>
-            <span class="my-2">Post source:</span>  
-            <span class="mx-2"> <?=$res["libelle_poste"]?></span><br>
-            <span class="my-2">Depart:</span>  
-            <span class="mx-2"> <?=$res["Lib_depart"]?></span><br>
-            <span class="my-2">Nombre clients:</span>  
-            <span class="mx-2"><?= $somme_client ?></span><br>
-       </div>
-       <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
-            <span class="my-2">TypeJ :</span>  
-            <span class="mx-2"> <?=$res["Lib_typej"]?></span><br>
-            <span class="my-2">TypeH:</span> 
-            <span class="mx-2"> <?=$res["Lib_typeh"]?></span><br>
-            <span class="my-2">Nombre de omt man:</span> 
-            <span class="mx-2"> <?=$res["nb_omt_man"]?></span><br>
-            <span class="my-2">Nombre de omt def:</span> 
-            <span class="mx-2"> <?=$res["nb_omt_def"]?></span><br>
-     </div>            
-     <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
-            <span class="my-2"> Manoeuvre dernier omt:</span>  
-            <span class="mx-2"> <?= date('H \H i \M\n s \S', strtotime($res["mderomt_bie"])) ?></span><br>
-            <span class="my-2">Localisation du défaut:</span> 
-            <span class="mx-2"><?= date('H \H i \M\n s \S', strtotime($res["locdef_bie"])) ?></span><br>
-            <span class="my-2">Fin de coupure:</span> 
-            <span class="mx-2">  <?= date('H \H i \M\n s \S', strtotime($res["findc_bie"])) ?></span><br>
-            <span class="my-2">Fin d'indisponiblité de l'ouvrage en défaut:</span> 
-            <span class="mx-2"> <?= date('H \H i \M\n s \S', strtotime($res["fin_indispod_bie"])) ?></span><br>
-    </div>
-    <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
-            <span class="my-2"> Prémier contact avec pdm:</span>  
-            <span class="mx-2"><?=$res["pdm_bie"]?></span><br>
-            <span class="my-2">Nombre de renvois sur défaut:</span> 
-            <span class="mx-2"><?=$res["nbrenvoi_defaut"]?></span><br>
-     </div>
-     <div  class="m-auto col-11 col-md-5 bg-light my-2 p-1">
-            <span class="my-2">Dispatcheur 1 :</span> 
-            <span class="my-2"> <?=$res["dsp1"]?></span><br>
-            <span class="my-2">Dispatcheur 2 :</span> 
-            <span class="my-2"> <?=$res["dsp2"]?></span><br>
-     </div>
-     <div class="m-auto col-11 col-md-11 bg-light my-2 p-1">
-               <span class="my-2">Lieu de defaut et Rex:</span>  
+          <td>
+            <span class="mx">TypeJ :</span>  
+            <span><?=$res["Lib_typej"]?></span><br/>
+            <span class="mx">TypeH:</span> 
+            <span><?=$res["Lib_typeh"]?></span><br/>
+            <span class="mx">Nombre de omt man:</span> 
+            <span><?=$res["nb_omt_man"]?></span><br/>
+            <span class="mx">Nombre de omt def:</span> 
+            <span><?=$res["nb_omt_def"]?></span><br/>
+          </td>     
+          <td>
+            <span class="mx"> Manoeuvre dernier omt:</span>  
+            <span><?= date("H:i:s", strtotime($res["mderomt_bie"]))?></span><br/>
+            <span class="mx">Localisation du défaut:</span> 
+            <span><?= date("H:i:s", strtotime($res["locdef_bie"]))?></span><br/>
+            <span class="mx">Fin de coupure:</span> 
+            <span><?= date("H:i:s", strtotime($res["findc_bie"]))?></span><br/>
+            <span class="mx">Fin d"indisponiblité de l"ouvrage en défaut:</span> 
+            <span><?= date("H:i:s", strtotime($res["fin_indispod_bie"]))?></span><br/>
+          </td>
+
+     </tr>
+     <tr>
+          <td>
+            <span class="mx">Prémier contact avec pdm:</span>  
+            <span><?=$res["pdm_bie"]?></span><br/>
+            <span class="mx">Nombre de renvois sur défaut:</span> 
+            <span><?=$res["nbrenvoi_defaut"]?></span><br/>
+        </td>
+        <td>
+            <span class="mx">Dispatcheur 1 :</span> 
+            <span ><?=$res["dsp1"]?></span><br/>
+            <span class="mx">Dispatcheur 2 :</span> 
+            <span><?=$res["dsp2"]?></span><br/>
+        </td>
+    </tr>
+     <tr>
+           <td colspan="2">
+               <span class="mx">Lieu de defaut et Rex:</span>  
                <p><?=$res["Lieu_def_rex"]?></p>
-     </div>
-  </div>
-<div class="col-11 m-auto">
-<table class="table text-light">
+           </td>
+    </tr>
+  </tbody>
+
+</table>
+<table id="detail">
  <thead>
-   <tr class="text-center">
-     <th scope="col" class="col-2 px-2 mx-1 bg-info text-dark">
-          <span class="my-2">Date</span>
+   <tr>
+     <th>
+          <span>Date</span>
      </th>
-     <th scope="col" class="col-2 px-2 mx-1 bg-info text-dark">
-          <span class="my-2">Heure</span>
+     <th>
+          <span>Heure</span>
     </th>
-     <th scope="col" class="col-3 px-2 mx-1 bg-info text-dark">
-          <span class="my-2">Poste réalimentés</span>
+     <th>
+          <span>Poste réalimentés</span>
      </th>
-     <th scope="col"  class="col-1 px-2 mx-1 bg-info text-dark">
-         <span class="my-2">T</span>
+     <th>
+         <span>T</span>
      </th>
-     <th scope="col"  class="col-2 px-2 mx-1 bg-info text-dark">
-          <span class="my-2">Clients</span>
+     <th >
+          <span>Nombre de client</span>
      </th>
-     <th class="col-3 px-2 mx-1 bg-info text-dark">
-       <span class="my-2">Critère B(Ms)</span>
+     <th>
+       <span>Critère B(Ms)</span>
      </th>
   </tr>
  </thead>
  <tbody>
- <?php foreach($res2 as $value){ 
-   
- ?>
-<tr class="text-center">
-       <td><span class="px-2 bg-secondary  m-2"><?= date('d/m/Y', strtotime($value["date_realim"])) ?></span></td>
-       <td> <span class="px-2 bg-secondary  m-2"> <?= date('H \H i \M\n s \S', strtotime($value["date_realim"]))?></span></td>
-       <td ><span class="px-2 bg-secondary  m-2"> <?=$value["Liste_postes"] ?></span></td>
-       <td><span class="px-2 bg-secondary  m-2">T</span></td>
-       <td><span class="px-2 bg-secondary  m-2"><?=$value["nbcli_poste"]?></span></td>
-       <td><span class="px-2 bg-secondary  m-2"><?= $value["critere_B"]?></span></td> 
-    </tr>    
- <?php } ?>
+<?php foreach($res2 as $value){?>
 
-    <tr class="text-center">
+     <tr class="text-center">
+       <td><span><?= date("d/m/Y", strtotime($value["date_realim"]))?></span></td>
+       <td> <span><?= date("H:i:s", strtotime($value["date_realim"]))?></span></td>
+       <td ><span><?= $value["Liste_postes"]?></span></td>
+       <td><span>T</span></td>
+       <td><span><?= $value["nbcli_poste"]?></span></td>
+       <td><span><?= $value["critere_B"]?></span></td> 
+    </tr> 
 
-               <td colSpan='3 ' class='text-dark'><b>Total</b><td>
-               <td><span class="px-2  bg-danger text-dark m-2"><b><?=$somme_client?></b></span></td>
-               <td><span class="px-2 bg-danger text-dark m-2"><b><?=$somme_critere_b ?></b></span></td>
-    <tr>
-   </tbody></table>
-</div>
+<?php } ?>
 
-<?php $container=ob_get_clean() ?>
+     <tr class="total">
+               <td colSpan="3"><b>Total</b><td>
+               <td><span><b><?= $somme_client ?></b></span></td>
+               <td><span><b><?= $somme_critere_b ?></b></span></td>
+     <tr>
+     </tbody>
+     </table>   
+</body>
+</html>
+
+ <?php $container= ob_get_clean();?>
+

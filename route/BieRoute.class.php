@@ -78,10 +78,11 @@ class BieRoute{
     }
     public  function pdf(Bie $bie){
         $id= isset($_GET['id'])? intval($_GET['id']):false;
+        $apercy= isset($_GET['t'])?intval($_GET['t']):0;
         if(!$id){
             throw new Exception("UNE ERREUR DANS LA ROUTE PDF ID EXISTE PAS");
         }
-        $bie->pdf($id);
+        $bie->pdf($id,$apercy);
     }
 
 }

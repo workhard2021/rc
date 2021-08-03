@@ -1,7 +1,6 @@
 <?php
 
 require_once ('model/Model.class.php');
-require_once('view/bie/pdf.php');
 require_once("vendor/Autoload.php");
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -98,20 +97,21 @@ class Bie{
           header("location:http://localhost:8888/index.php?action=gets&table=bie&message=".$message);
     }
 
-    public function pdf($id){
-          
+    public function pdf($id,$apercy){
+        
         $res=$this->model->get_bie($id);
         $res2=$this->model->get("liste_realimentation","id_bie",$id);
-        $html=pdf($res,$res2);
+        require_once('view/bie/pdf.php');
         $option=new Options();
+        $option->set('isRemoteEnabled', true);
         $option->set("defautlFont","courier");
-        $option->set('isHtml5ParserEnabled', true);
+        $option->set('isHtml5ParserEnabled',true);
         $dompdf=new Dompdf($option);
-        $dompdf->loadHtml($html);
+        $dompdf->loadHtml($container,"utf-8");
         $dompdf->setPaper("A4","portrait");
         $dompdf->render();
-        $ficher="doc-".date("d-m-Y");
-        $dompdf->stream($ficher);
+        $ficher=$res["Num_bie"];
+        $dompdf->stream($ficher,["Attachment"=>$apercy]);
         exit();
         
      }
