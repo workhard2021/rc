@@ -102,4 +102,5 @@
     <button class="btn btn-secondary col-4 d-block m-auto">Ajouter +</button>
  </div>
 </form>
+<script src="view/javascript/critere.js"></script>
 <?php $container = ob_get_clean() ?>

@@ -121,4 +121,5 @@
         <button class="btn btn-info col-4 d-block m-auto">Enregistrer</button>
    </div>
 </form>
+<script src="view/javascript/client.js"></script>
 <?php $container = ob_get_clean() ?>

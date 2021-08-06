@@ -200,7 +200,7 @@ ob_start() ?>
         <label class="pb-1" for="nb_omt_man">Nb omt man
         <?php if(empty($_GET["nb_omt_man"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <select  id="nb_omt_man" name="nb_omt_man" multiple class="form-select">
+        <select  id="nb_omt_man" name="nb_omt_man"  class="form-select">
         <option value="" >Choisir</option>
         <?php   foreach($omt as $value){ 
 
@@ -214,7 +214,7 @@ ob_start() ?>
         <label class="pb-1" for="nb_omt_def">Nb omt def
         <?php if(empty($_GET["nb_omt_def"])){ echo "<span class='text-danger'>*</span>";}?>
         </label><br>
-        <select  id="nb_omt_def" name="nb_omt_def" multiple class="form-select">
+        <select  id="nb_omt_def" name="nb_omt_def"  class="form-select">
              <option value="">Choisir</option>
            <?php   foreach($omt as $value){
                      $val=($value['Id_omt']==$_GET['nb_omt_def'])? "selected":"";
@@ -228,7 +228,7 @@ ob_start() ?>
        <label class="pb-1" for="nb_ild_visu">Nb ild visu
        <?php if(empty($_GET["nb_ild_visu"])){ echo "<span class='text-danger'>*</span>";}?>
        </label><br>
-       <select  id="nb_ild_visu" name="nb_ild_visu" multiple class="form-select">
+       <select  id="nb_ild_visu" name="nb_ild_visu"  class="form-select">
        <option value="">Choisir Nb ild visu</option>
             <?php  foreach($ild as $value){
                 $val=($value['Id_ild']==$_GET['nb_ild_visu'])? "selected":"";
@@ -241,7 +241,7 @@ ob_start() ?>
        <label class="pb-1" for="nb_ild_def">Nb ild def
        <?php if(empty($_GET["nb_ild_def"])){ echo "<span class='text-danger'>*</span>";}?>
        </label><br>
-       <select id="nb_ild_def" name="nb_ild_def" multiple class="form-select">
+       <select id="nb_ild_def" name="nb_ild_def"  class="form-select">
        <option  value="">Choisir</option>
            <?php  foreach($ild as $value){ 
                  $val=($value['Id_ild']==$_GET['nb_ild_def'])? "selected":"";

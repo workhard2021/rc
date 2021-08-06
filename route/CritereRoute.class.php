@@ -52,7 +52,7 @@ class CritereRoute{
     public function delete(CritereB $critere_b)
     {    
 
-         $id= isset($_GET['id'])? intval($_GET['id']):false;
+         $id= isset($_GET['id'])? $_GET['id']:false;
          if($id!=''){
                $critere_b->delete($id);
          }else{

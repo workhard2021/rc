@@ -59,6 +59,7 @@
              object-fit:cover;
         }
     </style>
+    
 </head>
 <body>
       <heade class="w-100 header">
@@ -87,8 +88,8 @@
                 </div>
            </footer>
           <!-- Script en local -->
-          <script src="view/javascript/critere.js"></script>
-          <script src="view/javascript/client.js"></script>
+          <!-- <script src="view/javascript/critere.js"></script> -->
+          <!-- <script src="view/javascript/client.js"></script> -->
            <!-- script et css pour le plugin query-datable-->
            <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">

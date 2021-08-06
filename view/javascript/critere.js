@@ -1,10 +1,11 @@
 async function get(url){
 
-    let res= await fetch(url,{method:'get',headers:"application/json"});
+    let res= await fetch(url,{method:'get',headers:{"Content-type": "application/json"}});
      if(res.status !=200) alert("une erreur");
      return await res.json(); 
 
 }
+
 
 const Liste_postes=document.getElementById("Liste_postes");
 const departs=document.getElementById("departs");
@@ -32,8 +33,8 @@ async  function getDepart(e){
 }
 
 function seletionTout(val){
-       const checkbox=document.querySelectorAll(".checkbox");
 
+       const checkbox=document.querySelectorAll(".checkbox");
        if(val.checked){
           console.log(val.checked); 
           checkbox.forEach(element => {
@@ -63,7 +64,3 @@ async function  getTransfo(e){
                }
                clients.innerHTML=input;
 }
-
-window.addEventListener("load",()=>{
-        clients.innerHTML="";
-})

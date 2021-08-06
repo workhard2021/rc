@@ -1,7 +1,6 @@
+ async function get(url){
 
-async function get(url){
-
-     let res= await fetch(url,{method:'get',headers:"application/json"});
+     let res= await fetch(url,{method:'get',headers:{"Content-type":"application/json"}});
      if(res.status !=200) alert("une erreur");
      return await res.json(); 
     

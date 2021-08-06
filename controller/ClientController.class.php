@@ -14,28 +14,27 @@ class ClientController{
     } 
 
     public function delete($colonne,$id){
-        $res=$this->model->delete($this->table,$colonne,$id);  
-        return $res;
+        
+        $this->model->delete($this->table,$colonne,$id);  
+        header("location:http://localhost:8888/index.php?action=gets&table=client");
+        exit();
     }
     public function create($array){
 
             $mesage="Client Entregistré";
-            $res=$this->model->create($this->table,$array);
-            if($res!=""){ 
-              header("location:http://localhost:8888/index.php?table=client&action=form&message=$mesage");
-               exit();
-            }
+            $this->model->create($this->table,$array);
+            header("location:http://localhost:8888/index.php?table=client&action=form&message=$mesage");
+            exit();
+            
     }
     public function update($array,$id){
         
-        $res=$this->model->update($this->table,$array,"Id_transf",$id);
+        $this->model->update($this->table,$array,"Id_transf",$id);
         $mesage="Mise à jour éffectuée"; 
-        if($res!=""){ 
-            header("location:http://localhost:8888/index.php?table=client&action=modifier&message=$mesage&id=$id");
-             exit();
-        }
-
+        header("location:http://localhost:8888/index.php?table=client&action=modifier&message=$mesage&id=$id");
+        exit();
     }
+    
     public function get($colonne,$id){
           $res=$this->model->get($this->table,$colonne,$id);
           require_once "view/client/form_client";
