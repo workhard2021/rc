@@ -36,7 +36,6 @@ function seletionTout(val){
 
        const checkbox=document.querySelectorAll(".checkbox");
        if(val.checked){
-          console.log(val.checked); 
           checkbox.forEach(element => {
                 element.checked=val.checked;
           });
