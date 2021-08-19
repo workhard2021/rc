@@ -70,7 +70,7 @@ class Bie{
                 $res=$this->model->create("liste_realimentation",$liste_realim);
           }
           unset($_SESSION["session_critere_b"]);
-          header("location:http://localhost:8888/index.php?action=get&table=bie&id=".$id);
+          header("location:index.php?action=get&table=bie&id=".$id);
           exit();
     }
 
@@ -94,7 +94,7 @@ class Bie{
           $this->model->delete($this->table,"id_bie",$id);
           $this->model->delete("liste_realimentation","id_bie",$id);
           $message="Supprimé";
-          header("location:http://localhost:8888/index.php?action=gets&table=bie&message=".$message);
+          header("location:index.php?action=gets&table=bie&message=".$message);
     }
 
     public function pdf($id,$apercy){

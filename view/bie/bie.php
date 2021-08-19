@@ -71,8 +71,8 @@
            
      </style>
     <div class="m-3 col-md-2 col-4 bg-light my-2 p-1 link">
-         <a href="http://localhost:8888/index.php?t=1&action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a><br>
-         <a href="http://localhost:8888/index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Apercu</a>
+         <a href="index.php?t=1&action=pdf&table=bie&id=<?= $res['id_bie']?>">Télécharger Pdf</a><br>
+         <a href="index.php?action=pdf&table=bie&id=<?= $res['id_bie']?>">Apercu</a>
     </div>
    <?php $somme_client=0;
    $somme_critere_b=0; 
@@ -86,7 +86,7 @@
   <table id="info_bie">
      <tbody> 
        <tr>
-         <td><img class="item-logo" src="http://localhost:8888/view/images/edm.png" alt="..."/></td>
+         <td><img class="item-logo" src="../../public/images/edm.png" alt="..."/></td>
          <td> <b>N° </b><?=$res["Num_bie"]?></td>
          <td><b>Date: </b><?=$res["Heure_Bie"]?></td>
        <tr>

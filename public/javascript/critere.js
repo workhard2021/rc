@@ -3,7 +3,6 @@ async function get(url){
     let res= await fetch(url,{method:'get',headers:{"Content-type": "application/json"}});
      if(res.status !=200) alert("une erreur");
      return await res.json(); 
-
 }
 
 
@@ -20,9 +19,9 @@ departs.addEventListener("change",getTransfo);
 async  function getDepart(e){
                e.preventDefault();
                const id=this.value;
-               url=`http://localhost:8888/e.php?table=pos_sce&colonne=libelle_poste&id=${id}`;
+               url=`e.php?table=pos_sce&colonne=libelle_poste&id=${id}`;
                let res=await get(url);
-               url2=`http://localhost:8888/e.php?table=depart_hta&colonne=Id_Psce&id=${res[0].Id}`;
+               url2=`e.php?table=depart_hta&colonne=Id_Psce&id=${res[0].Id}`;
                res=await get(url2);
                let options="<option value='' selected>Choisir</option>";
                for(let value of res){
@@ -50,9 +49,9 @@ async function  getTransfo(e){
                e.preventDefault();
                const id=this.value;
                let input="";
-               url=`http://localhost:8888/e.php?table=depart_hta&colonne=Lib_depart&id=${id}`;
+               url=`e.php?table=depart_hta&colonne=Lib_depart&id=${id}`;
                let res=await get(url);
-               url2=`http://localhost:8888/e.php?table=clients&colonne=Id_depart&id=${res[0].Id_depart}`;
+               url2=`e.php?table=clients&colonne=Id_depart&id=${res[0].Id_depart}`;
                res=await get(url2);
                if(res.length>0){ 
                   input="<label for='tout'>Selectionez tout </label><input onClick='seletionTout(this)' id='tout' type='checkbox' /><br>";

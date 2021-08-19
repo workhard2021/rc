@@ -17,7 +17,7 @@
 
 <h3 class="text-center text-dark">Ajouter un bie</h3>
  <div class="d-flex align-items-center justify-coneten-evently my-3 py-3">
- <a class="m-auto" href="http://localhost:8888/index.php?action=gets&table=critere">Voir critere B <span class="text-danger" id="nbr"><?= $count?></span></a>
+ <a class="m-auto" href="index.php?action=gets&table=critere">Voir critere B <span class="text-danger" id="nbr"><?= $count?></span></a>
  </div>
   <?= $erreur?>
   <?=$message ?>
@@ -102,5 +102,5 @@
     <button class="btn btn-secondary col-4 d-block m-auto">Ajouter +</button>
  </div>
 </form>
-<script src="view/javascript/critere.js"></script>
+<script src="../../public/javascript/critere.js"></script>
 <?php $container = ob_get_clean() ?>

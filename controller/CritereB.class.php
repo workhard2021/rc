@@ -25,7 +25,7 @@ class CritereB{
            unset($_SESSION["session_critere_b"][$id]);
       }
       $message="Supprimé";
-      header("location:http://localhost:8888/index.php?action=gets&table=critere&message=".$message);
+      header("location:index.php?action=gets&table=critere&message=".$message);
    }
 
    public function  getsApi($table){
@@ -40,11 +40,9 @@ class CritereB{
     $interval=0;
     $somme_nbr_clients=0;
 
-    $date_incident = strtotime($array["date_incident"]) *1000;
-    $date_realim= strtotime($array["date_realim"]) *1000;
-    $interval=($date_realim-$date_incident)/60000;
+    $seconde=(strtotime($array["date_realim"])-strtotime($array["date_incident"]))%1000;
+    $interval=$seconde/60;
     $res=$this->model->gets("clients");
-
     foreach($array as $key =>$value){
         if( $key!="date_incident"&& $key!="Listearrayes" && $key!="departs" && $key!="date_realim"){
             $nbr_client+=intval($value);
@@ -59,7 +57,7 @@ class CritereB{
     $critere_b=round($critere_b,2);
     $_POST["critere_B"]=$critere_b;
     $_POST["nbcli_poste"]=$nbr_client;
-     
+  
     $sesion_criter_b=isset($_SESSION["session_critere_b"])? $_SESSION["session_critere_b"]:[];
     if(count($sesion_criter_b)==0){
 
@@ -68,9 +66,8 @@ class CritereB{
     }else{
        $_SESSION["session_critere_b"][]=$_POST;  
     }
-
-    header("location:http://localhost:8888/index.php?table=critere&action=form&message=".$message);
-      exit();
+    header("location:index.php?table=critere&action=form&message=".$message);
+    exit();
  }
 
 

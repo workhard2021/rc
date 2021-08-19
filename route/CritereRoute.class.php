@@ -19,6 +19,7 @@ class CritereRoute{
     }
 
    public function create(CritereB $critere_b){
+       
        $array=[];
        $erreur="";
        $params="";

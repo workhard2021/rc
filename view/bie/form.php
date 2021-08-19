@@ -5,7 +5,7 @@ ob_start() ?>
 
 <h3 class="text-center text-info my-3"> Information suplementaire bie</h3>
  <p class="text-center text-danger"><?= $erreur ?></p>
-<div class="p-3 m-3"><a href="http://localhost:8888/index.php?action=gets&table=critere">Retour</a></div>
+<div class="p-3 m-3"><a href="index.php?action=gets&table=critere">Retour</a></div>
 <form method="post" action="index.php?action=create&table=bie">
      <!-- autre  -->
     <div class="d-flex mb-3 align-items-flex-start justify-content-center flex-wrap col-11 m-auto">
@@ -280,8 +280,6 @@ ob_start() ?>
         </label><br>
         <input type="datetime-local" class="form-control" value="<?php if(isset($_GET['Heure_Bie'])){  echo $_GET['Heure_Bie'];}?>" id="Heure_Bie" name="Heure_Bie" placeholder="<?=$format_date ?>"/>
      </div>    
-
-
        <div class=" m-auto mt-0 col-11 py-2">
          <label class="pb-1" for="Lieu_def_rex">Lieu def rex
              <?php if(empty($_GET["Lieu_def_rex"])){ echo "<span class='text-danger'>*</span>";}?>
@@ -292,6 +290,7 @@ ob_start() ?>
  <div class="my-3 p-5 col-11 m-auto">
     <button class="btn btn-info col-4 d-block m-auto">Envoyer</button>
  </div>
-    </div>
+ 
+ </form>
 <?php $container=ob_get_clean();
 ?>

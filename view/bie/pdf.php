@@ -88,18 +88,15 @@
   <table id="info_bie">
      <tbody> 
        <tr>
-         <td><img class="item-logo" src="http://localhost:8888/view/images/edm.png" alt="..."/></td>
+         <td><img class="item-logo" src="http://localhost:8888/public/images/edm.png" alt="..."/></td>
          <td> <b>N° </b><?=$res["Num_bie"]?></td>
          <td><b>Date: </b><?=$res["Heure_Bie"]?></td>
        <tr>
    </tbody>
  </table>
-
-   <table id="rapport">
-      
+   <table id="rapport">   
       <tbody>
          <tr>
-
           <td>
             <span class="mx">Origine:</span>  
             <span><?=$res["Lib_Origine"]?></span><br/>

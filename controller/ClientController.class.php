@@ -16,14 +16,14 @@ class ClientController{
     public function delete($colonne,$id){
         
         $this->model->delete($this->table,$colonne,$id);  
-        header("location:http://localhost:8888/index.php?action=gets&table=client");
+        header("location:index.php?action=gets&table=client");
         exit();
     }
     public function create($array){
 
             $mesage="Client Entregistré";
             $this->model->create($this->table,$array);
-            header("location:http://localhost:8888/index.php?table=client&action=form&message=$mesage");
+            header("location:index.php?table=client&action=form&message=$mesage");
             exit();
             
     }
@@ -31,7 +31,7 @@ class ClientController{
         
         $this->model->update($this->table,$array,"Id_transf",$id);
         $mesage="Mise à jour éffectuée"; 
-        header("location:http://localhost:8888/index.php?table=client&action=modifier&message=$mesage&id=$id");
+        header("location:index.php?table=client&action=modifier&message=$mesage&id=$id");
         exit();
     }
     

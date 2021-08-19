@@ -1,10 +1,10 @@
  async function get(url){
 
      let res= await fetch(url,{method:'get',headers:{"Content-type":"application/json"}});
-     if(res.status !=200) alert("une erreur");
+     if(res.status !=200) { alert("une erreur")}
      return await res.json(); 
     
-    }
+}
     
     const Id_posSce=document.getElementById("Id_posSce");
     const Id_depart=document.getElementById("Id_depart");
@@ -20,7 +20,7 @@
     
                e.preventDefault();
                const id=this.value;
-               url=`http://localhost:8888/e.php?table=depart_hta&colonne=Id_Psce&id=${id}`;
+               url=`e.php?table=depart_hta&colonne=Id_Psce&id=${id}`;
                res=await get(url);
                let options="<option value='' selected>Choisir</option>";
                for(let value of res){
@@ -32,7 +32,7 @@
     async  function getVillage(e){
                e.preventDefault();
                const id=this.value;
-               url=`http://localhost:8888/e.php?table=liste_village&colonne=Id_Commune&id=${id}`;
+               url=`e.php?table=liste_village&colonne=Id_Commune&id=${id}`;
                res=await get(url);
                let options="<option value='' selected>Choisir</option>";
                for(let value of res){

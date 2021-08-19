@@ -109,4 +109,5 @@
         <button class="btn btn-info col-4 d-block m-auto">Modifier</button>
    </div>
 </form>
+<script src="../../public/javascript/client.js"></script>
 <?php $container = ob_get_clean() ?>

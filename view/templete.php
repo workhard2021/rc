@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="view/css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/css/bootstrap.min.css">
     <title><?= $titre ?></title>
     <style>
 
@@ -66,10 +66,10 @@
 
            <nav class="py-3 mb-3 bg-info d-flex justify-content-evently">
                 <div class="col-md-3 col-12 col-md-12 text-center">
-                    <a class="p-1 text-light item " href="http://localhost:8888/index.php?action=gets&table=bie">Accueil</a>
-                    <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=critere">Ajouter bie</a> |
-                    <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=form&table=client">Ajouter client</a>
-                    <a class="p-1 text-light item" href="http://localhost:8888/index.php?action=gets&table=client">Liste client</a> 
+                    <a class="p-1 text-light item " href="index.php?action=gets&table=bie">Accueil</a>
+                    <a class="p-1 text-light item" href="index.php?action=form&table=critere">Ajouter bie</a> |
+                    <a class="p-1 text-light item" href="index.php?action=form&table=client">Ajouter client</a>
+                    <a class="p-1 text-light item" href="index.php?action=gets&table=client">Liste client</a> 
               
                </div>
            </nav>

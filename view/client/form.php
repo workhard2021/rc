@@ -100,14 +100,14 @@
            <label class="pb-1" for="nb_clients">Nombre de client
            <?php if(empty($_GET["nb_clients"])){ echo "<span class='text-danger'>*</span>";}?>
            </label><br>
-           <input type="number" class="form-control" id="nb_clients" value="<?php if(isset($_GET['nb_clients'])){  echo $_GET['nb_clients'];}?>" name="nb_clients" placeholder="Nombre de client"/>
+           <input type="number" class="form-control" id="nb_clients" value="<?php if(isset($_GET['nb_clients'])){echo $_GET['nb_clients'];}?>" name="nb_clients" placeholder="Nombre de client"/>
         </div>
 
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="Num_transf">Numero tranfo
            <?php if(empty($_GET["Num_transf"])){ echo "<span class='text-danger'>*</span>";}?>
            </label><br>
-           <input type="number" class="form-control" id="Num_transf" value="<?php if(isset($_GET['Num_transf'])){  echo $_GET['Num_transf'];}?>" name="Num_transf" placeholder="Numéro transfo"/>
+           <input type="number" class="form-control" id="Num_transf" value="<?php if(isset($_GET['Num_transf'])){ echo $_GET['Num_transf'];}?>" name="Num_transf" placeholder="Numéro transfo"/>
         </div>
         <div class="col-5 col-md-2 py-2 text-center m-auto">
            <label class="pb-1" for="Lib_transf">Libelle transfo
@@ -121,5 +121,5 @@
         <button class="btn btn-info col-4 d-block m-auto">Enregistrer</button>
    </div>
 </form>
-<script src="view/javascript/client.js"></script>
+<script src="../../public/javascript/client.js"></script>
 <?php $container = ob_get_clean() ?>

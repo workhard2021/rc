@@ -1,9 +1,10 @@
 <?php 
         $message=isset($_GET["message"])? htmlspecialchars($_GET["message"]):"";
         $somme_critere_b=0; $titre="liste critere b";
-        $container="<a class='d-block p-3 m-3' href='http://localhost:8888/index.php?action=form&table=critere'>Retour</a> 
+        $container="<a class='d-block p-3 m-3' href='index.php?action=form&table=critere'>Retour</a> 
         <h3 class='m-auto text-center'>Verification des critère B </h3>
         <p class='text-center text-success py-2'>$message</p>";
+        
         $test=isset($_SESSION["session_critere_b"]) && count($_SESSION["session_critere_b"])>0;
         if($test){
   
@@ -26,7 +27,7 @@
                </span><span  class=' my-2 mx-1  btn btn-light col-2 '>".$value['critere_B']."</span>
                <span class='btn btn-light mx-1  col-2 '>".$value['Liste_postes']."</span>
                <span class='btn btn-light mx-1  col-2'>".$value['mode_realim']."</span>
-               <a class='btn btn-light mx-1 col-2' href='http://localhost:8888/index.php?action=delete&table=critere&id=" .$key."'>Supp</a>
+               <a class='btn btn-light mx-1 col-2' href='index.php?action=delete&table=critere&id=" .$key."'>Supp</a>
                </li>";    
               } 
               $container.="</li>
@@ -34,7 +35,7 @@
                     <span class='mx-3'><b>CRITERE B TOTAL :</b></span> <span class='mx-3'>$somme_critere_b</span>
              </div>
              <div class='text-left m-auto my-2  py-3 m-auto'>
-                   <a class='p-3  text-dark bg-light' href='http://localhost:8888/index.php?table=bie&action=form'>Etape suivante</a> 
+                   <a class='p-3  text-dark bg-light' href='index.php?table=bie&action=form'>Etape suivante</a> 
              </div>"; 
         }
 
